@@ -2,8 +2,238 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Облачное хранилище | Портфолио</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-detail-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: background 0.3s;
+        }
+
+        .back-link:hover {
+            background: #2980b9;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .tech-stack span {
+            background: #e8f4fc;
+            color: #3498db;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .architecture-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .architecture-item h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .architecture-item ul {
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .architecture-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-architecture {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .tech-category h4 {
+            color: #3498db;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tech-category ul {
+            padding-left: 1rem;
+        }
+
+        .tech-category li {
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-category i {
+            color: #27ae60;
+            font-size: 0.9rem;
+        }
+
+        .deployment-steps {
+            counter-reset: step-counter;
+        }
+
+        .deployment-step {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .deployment-step:last-child {
+            border-bottom: none;
+        }
+
+        .deployment-step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3498db;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .code-block code {
+            color: #ecf0f1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary:hover {
+            background: #1a252f;
+        }
+
+        @media (max-width: 768px) {
+            .architecture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-architecture {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,11 +248,217 @@
         </nav>
     </header>
 
-    <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
-        <a href="../index.html#projects" style="display: inline-block; margin-bottom: 2rem;">← Назад к проектам</a>
-        <h1>Облачное хранилище</h1>
-        <p>Система хранения файлов с шифрованием и резервным копированием</p>
-        <p>Страница в разработке. Скоро здесь появится подробное описание проекта.</p>
+    <div class="project-detail-container">
+        <a href="../index.html#projects" class="back-link">
+            <i class="fas fa-arrow-left"></i> Назад к проектам
+        </a>
+
+        <div class="project-header">
+            <h1 class="project-title">Облачное хранилище</h1>
+            <p class="project-subtitle">Fullstack веб-приложение для безопасного хранения файлов с шифрованием и резервным копированием</p>
+
+            <div class="tech-stack">
+                <span>Python</span>
+                <span>Django</span>
+                <span>Django REST</span>
+                <span>PostgreSQL</span>
+                <span>React</span>
+                <span>Nginx</span>
+                <span>Gunicorn</span>
+                <span>Ubuntu</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Описание проекта</h2>
+            <p>Полнофункциональное облачное хранилище файлов с современным веб-интерфейсом и REST API. Проект демонстрирует навыки fullstack разработки и DevOps.</p>
+
+            <div class="architecture-grid">
+                <div class="architecture-item">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <ul>
+                        <li><strong>Django + Django REST Framework</strong> — основной фреймворк</li>
+                        <li><strong>PostgreSQL</strong> — база данных</li>
+                        <li><strong>JWT аутентификация</strong> — безопасный доступ</li>
+                        <li><strong>DRF Throttling</strong> — ограничение запросов</li>
+                        <li><strong>Swagger/Redoc</strong> — документация API</li>
+                    </ul>
+                </div>
+
+                <div class="architecture-item">
+                    <h3><i class="fas fa-desktop"></i> Frontend</h3>
+                    <ul>
+                        <li><strong>React 19</strong> — современный интерфейс</li>
+                        <li><strong>React Router</strong> — навигация</li>
+                        <li><strong>Axios</strong> — HTTP клиент</li>
+                        <li><strong>Yarn</strong> — менеджер пакетов</li>
+                        <li><strong>SPA архитектура</strong> — одностраничное приложение</li>
+                    </ul>
+                </div>
+
+                <div class="architecture-item">
+                    <h3><i class="fas fa-network-wired"></i> DevOps</h3>
+                    <ul>
+                        <li><strong>Ubuntu Server</strong> — операционная система</li>
+                        <li><strong>Nginx</strong> — веб-сервер и обратный прокси</li>
+                        <li><strong>Gunicorn</strong> — WSGI сервер для Django</li>
+                        <li><strong>Systemd</strong> — управление сервисами</li>
+                        <li><strong>PostgreSQL 12+</strong> — производственная БД</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Технологический стек</h2>
+            <div class="tech-architecture">
+                <div class="tech-category">
+                    <h4>Backend & API</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Python 3.8+</li>
+                        <li><i class="fas fa-check"></i> Django 5.2.1</li>
+                        <li><i class="fas fa-check"></i> Django REST Framework</li>
+                        <li><i class="fas fa-check"></i> Django CORS Headers</li>
+                        <li><i class="fas fa-check"></i> Simple JWT</li>
+                        <li><i class="fas fa-check"></i> Django Filter</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category">
+                    <h4>База данных</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> PostgreSQL 12+</li>
+                        <li><i class="fas fa-check"></i> Psycopg2</li>
+                        <li><i class="fas fa-check"></i> Миграции Django</li>
+                        <li><i class="fas fa-check"></i> Индексация</li>
+                        <li><i class="fas fa-check"></i> Резервное копирование</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> React 19.1.0</li>
+                        <li><i class="fas fa-check"></i> React Router DOM</li>
+                        <li><i class="fas fa-check"></i> Axios</li>
+                        <li><i class="fas fa-check"></i> Yarn 1.22+</li>
+                        <li><i class="fas fa-check"></i> Node.js 18+</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category">
+                    <h4>DevOps & Инфраструктура</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Ubuntu 20.04 LTS+</li>
+                        <li><i class="fas fa-check"></i> Nginx 1.18+</li>
+                        <li><i class="fas fa-check"></i> Gunicorn 20.0+</li>
+                        <li><i class="fas fa-check"></i> Systemd сервисы</li>
+                        <li><i class="fas fa-check"></i> UFW брандмауэр</li>
+                        <li><i class="fas fa-check"></i> SSL/TLS (Let's Encrypt)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Процесс развертывания на VPS</h2>
+            <p>Проект развернут на production-сервере с полной инфраструктурой:</p>
+
+            <div class="deployment-steps">
+                <div class="deployment-step">
+                    <h4>1. Подготовка сервера</h4>
+                    <p>Настройка Ubuntu сервера, установка необходимых пакетов:</p>
+                    <div class="code-block">
+                        <code>sudo apt update && sudo apt upgrade -y</code><br>
+                        <code>sudo apt install python3 python3-pip python3-venv nginx gunicorn postgresql postgresql-contrib git -y</code>
+                    </div>
+                </div>
+
+                <div class="deployment-step">
+                    <h4>2. Настройка базы данных PostgreSQL</h4>
+                    <p>Создание базы данных, пользователя, настройка прав доступа:</p>
+                    <div class="code-block">
+                        <code>CREATE DATABASE cloud_storage;</code><br>
+                        <code>CREATE USER mikhail WITH PASSWORD '0404' CREATEDB;</code><br>
+                        <code>GRANT ALL PRIVILEGES ON DATABASE cloud_storage TO mikhail;</code>
+                    </div>
+                </div>
+
+                <div class="deployment-step">
+                    <h4>3. Развертывание Backend (Django)</h4>
+                    <p>Установка зависимостей, миграции, статические файлы:</p>
+                    <div class="code-block">
+                        <code>python3 -m venv venv</code><br>
+                        <code>source venv/bin/activate</code><br>
+                        <code>pip install -r requirements.txt</code><br>
+                        <code>python manage.py migrate</code><br>
+                        <code>python manage.py collectstatic --noinput</code>
+                    </div>
+                </div>
+
+                <div class="deployment-step">
+                    <h4>4. Развертывание Frontend (React)</h4>
+                    <p>Сборка React приложения для production:</p>
+                    <div class="code-block">
+                        <code>npm install --global yarn</code><br>
+                        <code>yarn install --frozen-lockfile</code><br>
+                        <code>yarn build</code>
+                    </div>
+                </div>
+
+                <div class="deployment-step">
+                    <h4>5. Настройка Gunicorn как Systemd сервиса</h4>
+                    <p>Запуск Django через Gunicorn как фонового сервиса:</p>
+                    <div class="code-block">
+                        <code>sudo systemctl start gunicorn</code><br>
+                        <code>sudo systemctl enable gunicorn</code><br>
+                        <code>sudo systemctl status gunicorn</code>
+                    </div>
+                </div>
+
+                <div class="deployment-step">
+                    <h4>6. Настройка Nginx как обратного прокси</h4>
+                    <p>Конфигурация Nginx для обслуживания статики и проксирование запросов:</p>
+                    <div class="code-block">
+                        <code>sudo nano /etc/nginx/sites-available/cloud_storage</code><br>
+                        <code>sudo ln -s /etc/nginx/sites-available/cloud_storage /etc/nginx/sites-enabled/</code><br>
+                        <code>sudo systemctl restart nginx</code>
+                    </div>
+                </div>
+
+                <div class="deployment-step">
+                    <h4>7. Настройка безопасности</h4>
+                    <p>Брандмауэр, SSL сертификаты, безопасная конфигурация:</p>
+                    <div class="code-block">
+                        <code>sudo ufw allow 'Nginx HTTP'</code><br>
+                        <code>sudo certbot --nginx -d your-domain.com</code><br>
+                        <code>sudo ufw enable</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔗 Ссылки на проект</h2>
+            <div class="project-links">
+                <a href="https://github.com/Mikhail15011976/cloud_storage" class="project-link-btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> Исходный код на GitHub
+                </a>
+
+                <a href="https://github.com/Mikhail15011976/cloud_storage/blob/main/README.md" class="project-link-btn btn-secondary" target="_blank">
+                    <i class="fas fa-book"></i> Документация
+                </a>
+            </div>
+
+            <p style="margin-top: 1.5rem; color: #7f8c8d; padding: 1rem; background: #f8f9fa; border-radius: 5px;">
+                <i class="fas fa-info-circle"></i>
+                <strong>Примечание:</strong> Проект демонстрирует полный цикл разработки и развертывания fullstack приложения
+            </p>
+        </div>
     </div>
+
+    <footer>
+        <p>© 2024 Михаил Бабков. Все права защищены.</p>
+    </footer>
 </body>
 </html>

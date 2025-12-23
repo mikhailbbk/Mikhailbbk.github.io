@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizPlease Autoreg | Портфолио</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .project-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: #c0392b;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-stack span {
+            background: #e8f4fc;
+            color: #3498db;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .description {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .project-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-links {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-links h3 {
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #3498db;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #e1e8ed;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: #e8f4fc;
+            transform: translateX(5px);
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #27ae60;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Михаил Небушко</h1>
+            <ul>
+                <li><a href="../index.html#home">Главная</a></li>
+                <li><a href="../index.html#projects">Проекты</a></li>
+                <li><a href="../index.html#about">Обо мне</a></li>
+                <li><a href="../index.html#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="project-header">
+        <div class="project-detail">
+            <a href="../index.html#projects" class="back-button">← Назад к проектам</a>
+            <h1>QuizPlease Autoreg</h1>
+            <p class="subtitle">Автоматический мониторинг игр с Telegram уведомлениями и CI/CD</p>
+            <div class="tech-stack">
+                <span>Python</span>
+                <span>BeautifulSoup</span>
+                <span>GitHub Actions</span>
+                <span>Systemd</span>
+                <span>Telegram API</span>
+                <span>Linux</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="project-detail">
+        <div class="project-content">
+            <div class="description">
+                <h2 class="section-title">Описание проекта</h2>
+                <p>Автоматизированная система для мониторинга расписания игр "Квиз, плиз! KLG". Система парсит сайт, анализирует доступность мест и отправляет уведомления в Telegram при появлении новых игр или изменении статуса.</p>
+
+                <div class="project-image">
+                    <img src="https://via.placeholder.com/800x400?text=QuizPlease+Autoreg+Project" alt="Скриншот проекта QuizPlease Autoreg">
+                </div>
+
+                <h3 class="section-title">Основные функции</h3>
+                <ul class="features-list">
+                    <li>Автоматический парсинг расписания игр каждые 30 минут</li>
+                    <li>Фильтрация только классических игр "Квиз, плиз! KLG"</li>
+                    <li>Определение доступности мест (свободно/резерв/нет мест)</li>
+                    <li>Уведомления в Telegram о новых играх и изменениях статуса</li>
+                    <li>Полный расклад по каждой игре в Telegram</li>
+                    <li>Автоматический деплой через GitHub Actions</li>
+                    <li>Запуск как системный сервис через Systemd</li>
+                    <li>Логирование всех операций в файлы</li>
+                    <li>Хранение истории игр для отслеживания изменений</li>
+                </ul>
+
+                <h3 class="section-title">Архитектура</h3>
+                <p>Проект реализован на Python с использованием модульного подхода:</p>
+                <ul>
+                    <li><strong>extract_classic_games.py</strong> - основной парсер и монитор</li>
+                    <li><strong>telegram_notifier.py</strong> - отправка уведомлений в Telegram</li>
+                    <li><strong>config.py</strong> - конфигурация (токены, настройки)</li>
+                    <li><strong>get_chat_id.py</strong> - утилита для получения Chat ID</li>
+                    <li><strong>data/</strong> - хранение данных в JSON формате</li>
+                    <li><strong>logs/</strong> - логи операций</li>
+                </ul>
+
+                <h3 class="section-title">CI/CD Pipeline</h3>
+                <p>Настроен автоматический деплой через GitHub Actions при пуше в main ветку:</p>
+                <ol>
+                    <li>Запуск workflow на Ubuntu</li>
+                    <li>Настройка SSH соединения с сервером</li>
+                    <li>Подключение к серверу по SSH</li>
+                    <li>Обновление кода из репозитория</li>
+                    <li>Установка зависимостей Python</li>
+                    <li>Перезагрузка системного сервиса</li>
+                </ol>
+
+                <h3 class="section-title">Технические детали</h3>
+                <p><strong>Особенности реализации:</strong></p>
+                <ul>
+                    <li>Использование BeautifulSoup для парсинга HTML</li>
+                    <li>Асинхронные HTTP запросы через requests</li>
+                    <li>Хэширование игр для отслеживания изменений</li>
+                    <li>Поддержка Markdown в Telegram сообщениях</li>
+                    <li>Конфигурация через файлы для безопасности</li>
+                    <li>Отказоустойчивость при ошибках сети</li>
+                </ul>
+            </div>
+
+            <div class="project-links">
+                <h3>Ссылки на проект</h3>
+                <a href="https://github.com/Mikhail15011976/quizplease_autoreg" class="project-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <strong>GitHub Репозиторий</strong>
+                        <small>Исходный код проекта</small>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Mikhail15011976/quizplease_autoreg/blob/main/README.md" class="project-link" target="_blank">
+                    <i class="fas fa-book"></i>
+                    <div>
+                        <strong>Документация</strong>
+                        <small>README с инструкцией</small>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Mikhail15011976/quizplease_autoreg/tree/main/.github/workflows" class="project-link" target="_blank">
+                    <i class="fas fa-code-branch"></i>
+                    <div>
+                        <strong>CI/CD Workflows</strong>
+                        <small>Файлы деплоя</small>
+                    </div>
+                </a>
+
+                <h3>Технологии</h3>
+                <div class="tech-stack">
+                    <span>Python 3.9+</span>
+                    <span>BeautifulSoup4</span>
+                    <span>Requests</span>
+                    <span>Telegram Bot API</span>
+                    <span>GitHub Actions</span>
+                    <span>Systemd</span>
+                    <span>Ubuntu Server</span>
+                    <span>SSH</span>
+                    <span>JSON</span>
+                    <span>Logging</span>
+                </div>
+
+                <h3>Инфраструктура</h3>
+                <ul>
+                    <li><strong>Сервер:</strong> Ubuntu Linux VPS</li>
+                    <li><strong>Деплой:</strong> Автоматический через GitHub Actions</li>
+                    <li><strong>Запуск:</strong> Systemd сервис</li>
+                    <li><strong>Мониторинг:</strong> Telegram уведомления</li>
+                </ul>
+
+                <h3>Результаты</h3>
+                <ul>
+                    <li>Автоматизация мониторинга игр</li>
+                    <li>Мгновенные уведомления в Telegram</li>
+                    <li>Стабильная работа 24/7</li>
+                    <li>Простой процесс обновлений</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Михаил Небушко. Все права защищены.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

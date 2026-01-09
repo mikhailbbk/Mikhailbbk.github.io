@@ -5,6 +5,7 @@
 [![Flask](https://img.shields.io/badge/Flask-3.1%2B-black)](https://flask.palletsprojects.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12%2B-blue)](https://postgresql.org)
 [![React](https://img.shields.io/badge/React-19%2B-blue)](https://reactjs.org)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue)](https://github.com/features/actions)
 
 **Python Backend Developer & DevOps Engineer**
 
@@ -13,6 +14,8 @@
 
 ## Обо мне
 Python разработчик с фокусом на backend и DevOps. Специализируюсь на создании REST API, парсинге данных, автоматизации процессов и развертывании проектов на Linux-серверах.
+
+**Цель:** Ищу позицию Junior Python Backend Developer в команде, где смогу применять свои навыки и развиваться профессионально.
 
 ## Production проекты
 

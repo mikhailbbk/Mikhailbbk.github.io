@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizPlease Autoreg | Портфолио</title>
+    
+    <!-- Мета-теги для SEO -->
+    <meta name="description" content="Автоматическая система мониторинга расписания игр QuizPlease с Telegram уведомлениями и полным CI/CD циклом.">
+    <meta name="keywords" content="Python, BeautifulSoup, Telegram Bot, CI/CD, GitHub Actions, парсинг данных, автоматизация">
+    
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         .project-detail-container {
             max-width: 1200px;
@@ -16,6 +22,7 @@
         .back-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             background: #3498db;
             color: white;
@@ -23,11 +30,15 @@
             border-radius: 5px;
             text-decoration: none;
             margin-bottom: 30px;
-            transition: background 0.3s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 500;
+            cursor: pointer;
         }
 
         .back-link:hover {
             background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .project-header {
@@ -41,11 +52,42 @@
             margin-bottom: 1rem;
         }
 
+        .project-meta-detail {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta-detail span {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .project-meta-detail .project-status {
+            background: #27ae60;
+            color: white;
+        }
+
+        .project-meta-detail .project-update {
+            background: #3498db;
+            color: white;
+        }
+
         .project-subtitle {
             color: #7f8c8d;
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
+            line-height: 1.6;
         }
 
         .tech-stack {
@@ -67,9 +109,14 @@
         .section {
             background: white;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             margin-bottom: 2rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .section h2 {
@@ -91,13 +138,15 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .screenshot-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .screenshot-container {
@@ -119,6 +168,11 @@
             height: auto;
             display: block;
             object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover .screenshot-container img {
+            transform: scale(1.05);
         }
 
         .screenshot-caption {
@@ -141,11 +195,17 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .features-list li:hover {
+            background-color: #f8f9fa;
         }
 
         .features-list li i {
             color: #27ae60;
             margin-top: 0.3rem;
+            flex-shrink: 0;
         }
 
         .project-links {
@@ -158,12 +218,17 @@
         .project-link-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            flex: 1;
+            min-width: 0;
+            text-align: center;
         }
 
         .btn-primary {
@@ -178,10 +243,14 @@
 
         .btn-primary:hover {
             background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .btn-secondary:hover {
             background: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .architecture-grid {
@@ -196,11 +265,20 @@
             padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .architecture-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .architecture-item h3 {
             color: #3498db;
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .architecture-item ul {
@@ -211,11 +289,11 @@
         .architecture-item code {
             font-family: 'Courier New', Consolas, monospace;
             font-size: 0.85em;
-            background: #f8f9fa;
+            background: #e8f4fc;
             padding: 3px 6px;
             border-radius: 4px;
             color: #2c3e50;
-            border: 1px solid #e9ecef;
+            border: 1px solid #d1e7ff;
             font-weight: 600;
         }
 
@@ -235,6 +313,12 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .problem-item h4 {
@@ -277,6 +361,7 @@
             font-size: 0.85rem;
             line-height: 1.5;
             overflow-x: auto;
+            border: 1px solid #e9ecef;
         }
 
         @media (max-width: 992px) {
@@ -292,6 +377,22 @@
             
             .screenshot-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+            
+            .project-link-btn {
+                width: 100%;
             }
         }
     </style>
@@ -316,7 +417,14 @@
 
         <div class="project-header">
             <h1 class="project-title">QuizPlease Autoreg - Парсер и Telegram-бот</h1>
-            <p class="project-subtitle">Автоматическая система мониторинга расписания игр на quizplease.ru с отправкой уведомлений в Telegram и полным CI/CD циклом</p>
+            
+            <div class="project-meta-detail">
+                <span class="project-date"><i class="far fa-calendar"></i> Запущен: 2025</span>
+                <span class="project-status"><i class="fas fa-circle"></i> Production</span>
+                <span class="project-update"><i class="fas fa-sync-alt"></i> Обновлено: Январь 2025</span>
+            </div>
+            
+            <p class="project-subtitle">Автоматическая система мониторинга расписания игр на quizplease.ru с отправкой уведомлений в Telegram и полным CI/CD циклом. Работает 24/7 как systemd-сервис.</p>
 
             <div class="tech-stack">
                 <span>Python 3.11</span>
@@ -334,14 +442,14 @@
         <div class="section">
             <h2>Возможности системы</h2>
             <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> <strong>Автоматический мониторинг</strong> — Парсинг расписания игр с автоматической проверкой изменений</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Telegram уведомления</strong> — Автоматические уведомления о новых играх и изменении статуса</li>
-                <li><i class="fas fa-check-circle"></i> <strong>CI/CD пайплайн</strong> — Автоматический деплой через GitHub Actions при каждом коммите в main</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Отказоустойчивость</strong> — Работает как systemd-сервис 24/7 с автоперезапуском</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Полная информация</strong> — Детализированные сообщения с датой, временем, местом, ценой и статусом</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Автоматический мониторинг</strong> — Парсинг расписания игр с автоматической проверкой изменений каждые 15 минут</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Telegram уведомления</strong> — Автоматические уведомления о новых играх и изменении статуса с детализированной информацией</li>
+                <li><i class="fas fa-check-circle"></i> <strong>CI/CD пайплайн</strong> — Автоматический деплой через GitHub Actions при каждом коммите в main ветку</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Отказоустойчивость</strong> — Работает как systemd-сервис 24/7 с автоперезапуском при сбоях</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Полная информация</strong> — Детализированные сообщения с датой, временем, местом, ценой и статусом игры</li>
                 <li><i class="fas fa-check-circle"></i> <strong>Хранение данных</strong> — JSON-файлы для хранения текущего расписания и истории изменений</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Логирование</strong> — Комплексное логирование в файлы и systemd journal</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Конфигурация</strong> — Простая настройка через конфигурационный файл</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Логирование</strong> — Комплексное логирование в файлы и systemd journal для отладки</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Конфигурация</strong> — Простая настройка через конфигурационный файл с примером</li>
             </ul>
         </div>
 
@@ -350,49 +458,50 @@
             
             <div class="architecture-grid">
                 <div class="architecture-item">
-                    <h3>Структура проекта</h3>
+                    <h3><i class="fas fa-folder"></i> Структура проекта</h3>
                     <div class="project-structure">
 quizplease-autoreg/
 ├── .github/workflows/          # CI/CD пайплайны GitHub Actions
-│   ├── deploy.yml              # Автоматический деплой
-│   └── fix-git.yml             # Утилита для исправления Git
-├── src/                        # Исходный код
-│   ├── extract_classic_games.py # Основной парсер
-│   ├── telegram_notifier.py    # Telegram бот
-│   ├── get_chat_id.py          # Утилита получения Chat ID
-│   ├── config.example.py       # Пример конфигурации
-│   └── config.py               # Фактическая конфигурация
+│   ├── deploy.yml              # Автоматический деплой на сервер
+│   └── fix-git.yml             # Утилита для исправления Git репозитория
+├── src/                        # Исходный код проекта
+│   ├── extract_classic_games.py # Основной парсер расписания игр
+│   ├── telegram_notifier.py    # Telegram бот для отправки уведомлений
+│   ├── get_chat_id.py          # Утилита получения Chat ID пользователя
+│   ├── config.example.py       # Пример конфигурационного файла
+│   └── config.py               # Фактическая конфигурация (не в Git)
 ├── data/                       # Хранение данных
 │   ├── classic_games.json      # Текущее расписание игр
-│   └── games_history.json      # История изменений
-├── logs/                       # Логи работы
-├── requirements.txt            # Зависимости Python
-└── README.md                   # Документация
+│   └── games_history.json      # История изменений расписания
+├── logs/                       # Логи работы системы
+├── requirements.txt            # Зависимости Python проекта
+├── quizplease-autoreg.service  # Конфигурация Systemd сервиса
+└── README.md                   # Полная документация проекта
                     </div>
                 </div>
 
                 <div class="architecture-item">
-                    <h3>CI/CD Pipeline (GitHub Actions)</h3>
+                    <h3><i class="fas fa-code-branch"></i> CI/CD Pipeline</h3>
                     <ul>
                         <li><strong>Trigger:</strong> Push в main ветку на GitHub</li>
-                        <li><strong>Подготовка:</strong> Установка Python и зависимостей</li>
-                        <li><strong>Развертывание:</strong> SSH подключение к серверу</li>
-                        <li><strong>Обновление:</strong> Обновление кода из репозитория</li>
-                        <li><strong>Установка:</strong> Установка зависимостей Python</li>
-                        <li><strong>Перезапуск:</strong> Перезапуск systemd сервиса</li>
-                        <li><strong>Уведомление:</strong> Отправка статуса деплоя</li>
+                        <li><strong>Подготовка:</strong> Установка Python 3.11 и зависимостей</li>
+                        <li><strong>Развертывание:</strong> SSH подключение к production серверу</li>
+                        <li><strong>Обновление:</strong> Обновление кода из репозитория Git</li>
+                        <li><strong>Установка:</strong> Установка зависимостей Python через pip</li>
+                        <li><strong>Перезапуск:</strong> Перезапуск systemd сервиса с новым кодом</li>
+                        <li><strong>Уведомление:</strong> Отправка статуса деплоя в Telegram</li>
                     </ul>
                 </div>
 
                 <div class="architecture-item">
-                    <h3>Ключевые компоненты</h3>
+                    <h3><i class="fas fa-cogs"></i> Ключевые компоненты</h3>
                     <ul>
-                        <li>extract_classic_games.py — Основной модуль парсера</li>
-                        <li>telegram_notifier.py — Telegram бот для уведомлений</li>
-                        <li>get_chat_id.py — Утилита для получения Chat ID</li>
-                        <li>config.py — Конфигурация проекта</li>
-                        <li>requirements.txt — Зависимости Python</li>
-                        <li>quizplease-autoreg.service — Конфигурация Systemd сервиса</li>
+                        <li><code>extract_classic_games.py</code> — Основной модуль парсера с многоуровневой обработкой данных</li>
+                        <li><code>telegram_notifier.py</code> — Telegram бот для отправки уведомлений о новых играх</li>
+                        <li><code>get_chat_id.py</code> — Утилита для получения Chat ID Telegram пользователя</li>
+                        <li><code>config.py</code> — Конфигурация проекта (токены, настройки)</li>
+                        <li><code>requirements.txt</code> — Зависимости Python (BeautifulSoup4, requests, python-telegram-bot)</li>
+                        <li><code>quizplease-autoreg.service</code> — Конфигурация Systemd сервиса для автозапуска</li>
                     </ul>
                 </div>
             </div>
@@ -404,61 +513,61 @@ quizplease-autoreg/
                 
                 <div class="problem-item">
                     <h4><i class="fas fa-code"></i> Задача 1: Надежный парсинг сайта с динамической структурой</h4>
-                    <p><strong>Проблема:</strong> Сайт quizplease.ru имеет сложную HTML-структуру, которая может изменяться.</p>
+                    <p><strong>Проблема:</strong> Сайт quizplease.ru имеет сложную HTML-структуру, которая может изменяться со временем, что приводит к сбоям парсинга.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Многоуровневое извлечение данных:</strong> Несколько методов поиска для каждого поля</li>
-                        <li><strong>Резервные селекторы:</strong> Альтернативные CSS-селекторы на случай изменений структуры</li>
-                        <li><strong>Валидация данных:</strong> Проверка корректности данных перед сохранением</li>
-                        <li><strong>Хэширование:</strong> Создание уникальных идентификаторов игр для отслеживания изменений</li>
+                        <li><strong>Многоуровневое извлечение данных:</strong> Реализация нескольких методов поиска для каждого поля данных</li>
+                        <li><strong>Резервные селекторы:</strong> Альтернативные CSS-селекторы на случай изменений структуры сайта</li>
+                        <li><strong>Валидация данных:</strong> Проверка корректности извлеченных данных перед сохранением</li>
+                        <li><strong>Хэширование:</strong> Создание уникальных идентификаторов игр для отслеживания изменений во времени</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-server"></i> Задача 2: Обеспечение бесперебойной работы 24/7</h4>
-                    <p><strong>Проблема:</strong> Система должна работать надежно и восстанавливаться после сбоев.</p>
+                    <p><strong>Проблема:</strong> Система должна работать надежно и автоматически восстанавливаться после сбоев сети, сервера или обновлений сайта.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Systemd сервис:</strong> Production-ready конфигурация с автоперезапуском</li>
-                        <li><strong>Комплексное логирование:</strong> Логирование в файлы и systemd journal</li>
-                        <li><strong>Обработка ошибок:</strong> Грейсфул деградация при сбоях сети или сервера</li>
-                        <li><strong>Таймауты:</strong> Настройка таймаутов HTTP-запросов</li>
+                        <li><strong>Systemd сервис:</strong> Production-ready конфигурация systemd с автоперезапуском при сбоях</li>
+                        <li><strong>Комплексное логирование:</strong> Логирование в файлы и systemd journal для упрощения отладки</li>
+                        <li><strong>Обработка ошибок:</strong> Грейсфул деградация при сбоях сети или недоступности сервера</li>
+                        <li><strong>Таймауты:</strong> Настройка таймаутов HTTP-запросов для предотвращения зависаний</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-robot"></i> Задача 3: Автоматизация деплоя и обновлений</h4>
-                    <p><strong>Проблема:</strong> Ручное обновление кода на сервере было трудоемким и подверженным ошибкам.</p>
+                    <p><strong>Проблема:</strong> Ручное обновление кода на сервере было трудоемким, подверженным ошибкам и требовало постоянного внимания.</p>
                     <p><strong>Решение: CI/CD пайплайн на GitHub Actions</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Автоматический триггер:</strong> Деплой при пуше в main ветку</li>
-                        <li><strong>Безопасное подключение:</strong> SSH-ключи через GitHub Secrets</li>
+                        <li><strong>Автоматический триггер:</strong> Деплой автоматически запускается при пуше в main ветку</li>
+                        <li><strong>Безопасное подключение:</strong> Использование SSH-ключей через GitHub Secrets для безопасного доступа</li>
                         <li><strong>Полный цикл:</strong> Обновление кода → установка зависимостей → перезапуск сервиса</li>
-                        <li><strong>Уведомления:</strong> Отправка статуса деплоя</li>
+                        <li><strong>Уведомления:</strong> Отправка статуса деплоя в Telegram для мониторинга</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-bell"></i> Задача 4: Интеллектуальные уведомления без спама</h4>
-                    <p><strong>Проблема:</strong> Избегать спама, но информировать о важных изменениях.</p>
+                    <p><strong>Проблема:</strong> Необходимо избегать спама пользователей, но при этом своевременно информировать о важных изменениях.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Только изменения:</strong> Уведомления только при новых играх или изменении статуса</li>
-                        <li><strong>Полная информация:</strong> Детализированные сообщения по каждой игре</li>
-                        <li><strong>Форматирование:</strong> Читабельные сообщения с эмодзи и Markdown</li>
-                        <li><strong>Уведомления об ошибках:</strong> Сообщения о проблемах в работе парсера</li>
+                        <li><strong>Только изменения:</strong> Уведомления отправляются только при обнаружении новых игр или изменении статуса существующих</li>
+                        <li><strong>Полная информация:</strong> Детализированные сообщения с эмодзи и Markdown форматированием</li>
+                        <li><strong>Читабельный формат:</strong> Структурированные сообщения с четким разделением информации</li>
+                        <li><strong>Уведомления об ошибках:</strong> Сообщения о проблемах в работе парсера для быстрого реагирования</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-shield-alt"></i> Задача 5: Безопасность и конфигурация</h4>
-                    <p><strong>Проблема:</strong> Безопасное хранение чувствительных данных (токены, Chat ID).</p>
+                    <p><strong>Проблема:</strong> Безопасное хранение чувствительных данных (токены бота, Chat ID) и простая настройка проекта.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Шаблон конфигурации:</strong> <code>config.example.py</code> для безопасного клонирования</li>
-                        <li><strong>Отдельный файл:</strong> <code>config.py</code> не отслеживается в Git</li>
-                        <li><strong>Встроенная утилита:</strong> <code>get_chat_id.py</code> для получения Chat ID</li>
-                        <li><strong>Изоляция:</strong> Сервис работает под отдельным пользователем Linux</li>
+                        <li><strong>Шаблон конфигурации:</strong> <code>config.example.py</code> для безопасного клонирования репозитория</li>
+                        <li><strong>Отдельный файл:</strong> <code>config.py</code> не отслеживается в Git для защиты данных</li>
+                        <li><strong>Встроенная утилита:</strong> <code>get_chat_id.py</code> для удобного получения Chat ID пользователя</li>
+                        <li><strong>Изоляция:</strong> Сервис работает под отдельным пользователем Linux с ограниченными правами</li>
                     </ul>
                 </div>
             </div>
@@ -466,7 +575,7 @@ quizplease-autoreg/
 
         <div class="section">
             <h2>Пример работы в Telegram</h2>
-            <p>Система отправляет подробные уведомления при обнаружении новых игр или изменении статуса:</p>
+            <p>Система отправляет подробные уведомления при обнаружении новых игр или изменении статуса существующих:</p>
 
             <div class="screenshot-grid">
                 <div class="screenshot-item">
@@ -497,32 +606,36 @@ quizplease-autoreg/
             
             <div class="architecture-grid">
                 <div class="architecture-item">
-                    <h3>Установка</h3>
+                    <h3><i class="fas fa-download"></i> Установка</h3>
                     <div class="project-structure">
 # Клонируйте репозиторий
 git clone https://github.com/Mikhail15011976/quizplease-autoreg.git
 cd quizplease-autoreg
 
-# Установите зависимости
+# Установите зависимости Python
 pip install -r requirements.txt
 
 # Настройте конфигурацию
 cp src/config.example.py src/config.py
-# Отредактируйте src/config.py, добавив ваш токен
+# Отредактируйте src/config.py, добавив ваш токен Telegram бота
 
-# Получение Chat ID
+# Получение Chat ID для уведомлений
 python src/get_chat_id.py
+# Отправьте боту команду /start и скопируйте ваш Chat ID
                     </div>
                 </div>
 
                 <div class="architecture-item">
-                    <h3>Запуск</h3>
+                    <h3><i class="fas fa-play"></i> Запуск</h3>
                     <div class="project-structure">
 # Локальный запуск (для тестирования)
 python src/extract_classic_games.py
 
 # Конфигурация systemd сервиса
 sudo nano /etc/systemd/system/quizplease-autoreg.service
+
+# Скопируйте содержимое файла quizplease-autoreg.service
+# и настройте пути в соответствии с вашей системой
 
 # Включение и запуск сервиса
 sudo systemctl daemon-reload
@@ -532,19 +645,22 @@ sudo systemctl start quizplease-autoreg
                 </div>
 
                 <div class="architecture-item">
-                    <h3>Управление сервисом</h3>
+                    <h3><i class="fas fa-tasks"></i> Управление сервисом</h3>
                     <div class="project-structure">
-# Проверить статус
+# Проверить статус работы сервиса
 sudo systemctl status quizplease-autoreg
 
-# Просмотреть логи
+# Просмотреть логи в реальном времени
 sudo journalctl -u quizplease-autoreg -f
 
-# Перезапустить сервис
+# Перезапустить сервис (после обновления конфигурации)
 sudo systemctl restart quizplease-autoreg
 
 # Остановить сервис
 sudo systemctl stop quizplease-autoreg
+
+# Запустить сервис после остановки
+sudo systemctl start quizplease-autoreg
                     </div>
                 </div>
             </div>
@@ -572,9 +688,10 @@ sudo systemctl stop quizplease-autoreg
                     <p><strong>Язык программирования:</strong> Python 3.11</p>
                     <p><strong>Основные библиотеки:</strong> BeautifulSoup4, Requests, python-telegram-bot</p>
                     <p><strong>Хранение данных:</strong> JSON файлы (classic_games.json, games_history.json)</p>
-                    <p><strong>Инфраструктура:</strong> Ubuntu Server, Systemd, GitHub Actions</p>
+                    <p><strong>Инфраструктура:</strong> Ubuntu Server 20.04+, Systemd, GitHub Actions CI/CD</p>
                     <p><strong>Статус:</strong> Production, работает с 2025 года</p>
-                    <p><strong>Частота проверки:</strong> Каждые 15 минут в определенное время</p>
+                    <p><strong>Частота проверки:</strong> Каждые 15 минут в рабочее время</p>
+                    <p><strong>Уведомления:</strong> Telegram бот с форматированными сообщениями</p>
                 </div>
             </div>
         </div>
@@ -597,6 +714,34 @@ sudo systemctl stop quizplease-autoreg
                         }
                     }
                 });
+            });
+            
+            // Ленивая загрузка изображений
+            const images = document.querySelectorAll('img');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+            
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => img.classList.add('loaded'));
+                    imageObserver.observe(img);
+                }
             });
         });
     </script>

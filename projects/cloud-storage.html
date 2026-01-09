@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Облачное хранилище | Портфолио</title>
+    
+    <!-- Мета-теги для SEO -->
+    <meta name="description" content="Fullstack облачное хранилище файлов на Django REST API + React с production развертыванием на VPS и SSL шифрованием.">
+    <meta name="keywords" content="Django, React, PostgreSQL, JWT, Nginx, SSL, Fullstack, облачное хранилище">
+    
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         .project-detail-container {
             max-width: 1200px;
@@ -16,6 +22,7 @@
         .back-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             background: #3498db;
             color: white;
@@ -23,11 +30,15 @@
             border-radius: 5px;
             text-decoration: none;
             margin-bottom: 30px;
-            transition: background 0.3s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 500;
+            cursor: pointer;
         }
 
         .back-link:hover {
             background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .project-header {
@@ -41,11 +52,42 @@
             margin-bottom: 1rem;
         }
 
+        .project-meta-detail {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta-detail span {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .project-meta-detail .project-status {
+            background: #27ae60;
+            color: white;
+        }
+
+        .project-meta-detail .project-update {
+            background: #3498db;
+            color: white;
+        }
+
         .project-subtitle {
             color: #7f8c8d;
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
+            line-height: 1.6;
         }
 
         .tech-stack {
@@ -67,9 +109,14 @@
         .section {
             background: white;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             margin-bottom: 2rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .section h2 {
@@ -90,11 +137,17 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .features-list li:hover {
+            background-color: #f8f9fa;
         }
 
         .features-list li i {
             color: #27ae60;
             margin-top: 0.3rem;
+            flex-shrink: 0;
         }
 
         .architecture-grid {
@@ -109,11 +162,20 @@
             padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .architecture-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .architecture-item h3 {
             color: #3498db;
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .architecture-item ul {
@@ -124,11 +186,11 @@
         .architecture-item code {
             font-family: 'Courier New', Consolas, monospace;
             font-size: 0.85em;
-            background: #f8f9fa;
+            background: #e8f4fc;
             padding: 3px 6px;
             border-radius: 4px;
             color: #2c3e50;
-            border: 1px solid #e9ecef;
+            border: 1px solid #d1e7ff;
             font-weight: 600;
         }
 
@@ -148,12 +210,17 @@
         .project-link-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            flex: 1;
+            min-width: 0;
+            text-align: center;
         }
 
         .btn-primary {
@@ -168,10 +235,14 @@
 
         .btn-primary:hover {
             background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .btn-secondary:hover {
             background: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .solved-problems {
@@ -184,6 +255,12 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .problem-item h4 {
@@ -226,11 +303,28 @@
             font-size: 0.9rem;
             line-height: 1.6;
             overflow-x: auto;
+            border: 1px solid #e9ecef;
         }
 
         @media (max-width: 768px) {
             .architecture-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+            
+            .project-link-btn {
+                width: 100%;
             }
         }
     </style>
@@ -255,7 +349,14 @@
 
         <div class="project-header">
             <h1 class="project-title">Облачное хранилище (Fullstack: Django + React)</h1>
-            <p class="project-subtitle">Fullstack веб-приложение для безопасного хранения файлов с production-развертыванием на VPS (Nginx + Gunicorn + PostgreSQL)</p>
+            
+            <div class="project-meta-detail">
+                <span class="project-date"><i class="far fa-calendar"></i> Запущен: 2025</span>
+                <span class="project-status"><i class="fas fa-circle"></i> Production</span>
+                <span class="project-update"><i class="fas fa-sync-alt"></i> Обновлено: Январь 2025</span>
+            </div>
+            
+            <p class="project-subtitle">Fullstack веб-приложение для безопасного хранения файлов с production-развертыванием на VPS (Nginx + Gunicorn + PostgreSQL). Поддержка SSL на порту 8443.</p>
 
             <div class="tech-stack">
                 <span>Python 3.11</span>
@@ -275,14 +376,14 @@
         <div class="section">
             <h2>Основные функции</h2>
             <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> <strong>JWT & Session Authentication</strong> — Гибкая система аутентификации и авторизации</li>
-                <li><i class="fas fa-check-circle"></i> <strong>RESTful API на Django REST Framework</strong> — Полноценное API для всех операций</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Advanced File Handling</strong> — Загрузка, скачивание, категоризация, контроль типов и размеров</li>
-                <li><i class="fas fa-check-circle"></i> <strong>PostgreSQL с оптимизацией</strong> — Надежное хранение данных с индексацией для быстрого поиска</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Modern UI/UX с Material-UI</strong> — Чистый, адаптивный интерфейс на React 19</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Drag & Drop Upload</strong> — Удобная загрузка файлов перетаскиванием</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Real-time Updates</strong> — WebSocket уведомления о статусе загрузки</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Production-развертывание</strong> — VPS с Nginx, Gunicorn, SSL на порту 8443</li>
+                <li><i class="fas fa-check-circle"></i> <strong>JWT & Session Authentication</strong> — Гибкая система аутентификации и авторизации с refresh токенами</li>
+                <li><i class="fas fa-check-circle"></i> <strong>RESTful API на Django REST Framework</strong> — Полноценное API для всех операций с файлами</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Advanced File Handling</strong> — Загрузка, скачивание, категоризация, контроль типов и размеров файлов</li>
+                <li><i class="fas fa-check-circle"></i> <strong>PostgreSQL с оптимизацией</strong> — Надежное хранение данных с индексацией для быстрого поиска файлов</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Modern UI/UX с Material-UI</strong> — Чистый, адаптивный интерфейс на React 19 с drag & drop загрузкой</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Drag & Drop Upload</strong> — Удобная загрузка файлов перетаскиванием с прогресс-баром</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Real-time Updates</strong> — WebSocket уведомления о статусе загрузки файлов</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Production-развертывание</strong> — VPS с Nginx, Gunicorn, SSL на порту 8443 и systemd управлением</li>
             </ul>
         </div>
 
@@ -290,38 +391,38 @@
             <h2>Архитектура системы</h2>
             <div class="architecture-grid">
                 <div class="architecture-item">
-                    <h3>Backend (Django REST)</h3>
+                    <h3><i class="fas fa-server"></i> Backend (Django REST)</h3>
                     <ul>
-                        <li><code>Django 5.2.1</code> — основной фреймворк</li>
-                        <li><code>Django REST Framework</code> — построение API</li>
-                        <li><code>Simple JWT</code> — аутентификация по токенам</li>
-                        <li><code>PostgreSQL 12+</code> — production база данных</li>
-                        <li><code>Gunicorn</code> — WSGI сервер</li>
-                        <li><code>Swagger/Redoc</code> — документация API</li>
+                        <li><code>Django 5.2.1</code> — основной фреймворк для backend разработки</li>
+                        <li><code>Django REST Framework</code> — построение RESTful API для клиентских приложений</li>
+                        <li><code>Simple JWT</code> — аутентификация по JWT токенам с поддержкой refresh</li>
+                        <li><code>PostgreSQL 12+</code> — production база данных для хранения метаданных</li>
+                        <li><code>Gunicorn</code> — WSGI сервер для production окружения</li>
+                        <li><code>Swagger/Redoc</code> — автоматическая документация API</li>
                     </ul>
                 </div>
 
                 <div class="architecture-item">
-                    <h3>Frontend (React SPA)</h3>
+                    <h3><i class="fas fa-desktop"></i> Frontend (React SPA)</h3>
                     <ul>
-                        <li><code>React 19.1.0</code> — современный интерфейс</li>
-                        <li><code>Material-UI (MUI)</code> — компонентная библиотека</li>
-                        <li><code>React Router DOM</code> — навигация SPA</li>
-                        <li><code>Axios</code> — HTTP клиент для API</li>
-                        <li><code>WebSocket</code> — real-time уведомления</li>
-                        <li><code>Context API</code> — управление состоянием</li>
+                        <li><code>React 19.1.0</code> — современный интерфейс с хуками</li>
+                        <li><code>Material-UI (MUI)</code> — компонентная библиотека для дизайна</li>
+                        <li><code>React Router DOM</code> — клиентская навигация для SPA</li>
+                        <li><code>Axios</code> — HTTP клиент для взаимодействия с API</li>
+                        <li><code>WebSocket</code> — real-time уведомления о загрузке файлов</li>
+                        <li><code>Context API</code> — управление состоянием приложения</li>
                     </ul>
                 </div>
 
                 <div class="architecture-item">
-                    <h3>DevOps & Infrastructure</h3>
+                    <h3><i class="fas fa-cloud"></i> DevOps & Infrastructure</h3>
                     <ul>
-                        <li><code>Ubuntu Server 20.04+</code> — операционная система</li>
-                        <li><code>Nginx 1.18+</code> — reverse proxy и SSL терминация</li>
-                        <li><code>Systemd</code> — управление сервисами</li>
-                        <li><code>SSL/TLS на порту 8443</code> — защищенное соединение</li>
-                        <li><code>UFW брандмауэр</code> — настройка безопасности</li>
-                        <li><code>Автоматический деплой</code> — скрипты обновления</li>
+                        <li><code>Ubuntu Server 20.04+</code> — операционная система для production</li>
+                        <li><code>Nginx 1.18+</code> — reverse proxy и SSL терминация на порту 8443</li>
+                        <li><code>Systemd</code> — управление сервисами с автоперезапуском</li>
+                        <li><code>SSL/TLS на порту 8443</code> — защищенное соединение для передачи данных</li>
+                        <li><code>UFW брандмауэр</code> — настройка безопасности сервера</li>
+                        <li><code>Автоматический деплой</code> — скрипты для обновления приложения</li>
                     </ul>
                 </div>
             </div>
@@ -330,8 +431,14 @@
                 <strong>Системная архитектура (production):</strong><br><br>
                 Client → Nginx:8443 (SSL) → Gunicorn → Django → PostgreSQL<br>
                 │<br>
-                ├── Static Files (React Build)<br>
-                └── Media Files (Uploads)<br>
+                ├── Static Files (React Build) - отдаются Nginx напрямую<br>
+                └── Media Files (Uploads) - хранятся на диске с хэшированными путями<br>
+                <br>
+                <strong>Особенности:</strong><br>
+                • Nginx обрабатывает SSL и статику<br>
+                • Gunicorn запускает Django приложение<br>
+                • PostgreSQL хранит метаданные пользователей и файлов<br>
+                • Systemd обеспечивает автозапуск и мониторинг
             </div>
         </div>
 
@@ -340,49 +447,49 @@
             <div class="solved-problems">
                 <div class="problem-item">
                     <h4><i class="fas fa-server"></i> Задача 1: Production-развертывание с SSL на порту 8443</h4>
-                    <p><strong>Проблема:</strong> Требовалось развернуть fullstack приложение с отдельной обработкой статики (React), медиафайлов и API, используя безопасное SSL соединение на нестандартном порту.</p>
+                    <p><strong>Проблема:</strong> Требовалось развернуть fullstack приложение с отдельной обработкой статики (React), медиафайлов и API, используя безопасное SSL соединение на нестандартном порту 8443.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Nginx конфигурация:</strong> Настройка как reverse proxy с SSL терминацией на порту 8443</li>
-                        <li><strong>Разделение статики:</strong> Nginx отдает собранные React файлы и медиафайлы, проксирует API запросы на Gunicorn через Unix socket</li>
+                        <li><strong>Nginx конфигурация:</strong> Настройка как reverse proxy с SSL терминацией на порту 8443 с самоподписанными сертификатами</li>
+                        <li><strong>Разделение статики:</strong> Nginx отдает собранные React файлы и медиафайлы напрямую, проксирует API запросы на Gunicorn через Unix socket</li>
                         <li><strong>Systemd сервис:</strong> Создание production-ready systemd сервиса для Django с настройками <code>Restart=always</code>, <code>RestartSec=10</code></li>
-                        <li><strong>SSL сертификаты:</strong> Генерация самоподписанных сертификатов для шифрования трафика</li>
+                        <li><strong>Безопасность:</strong> Настройка UFW брандмауэра, закрытие лишних портов, использование Unix sockets для внутренней коммуникации</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-database"></i> Задача 2: Оптимизация работы с файлами и базой данных</h4>
-                    <p><strong>Проблема:</strong> Эффективное хранение метаданных файлов, быстрый поиск и скачивание, защита от переполнения диска.</p>
+                    <p><strong>Проблема:</strong> Эффективное хранение метаданных файлов, быстрый поиск и скачивание, защита от переполнения диска, валидация загружаемых файлов.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>PostgreSQL с индексацией:</strong> Использование производственной БД с индексами на полях поиска (имя, тип, дата)</li>
-                        <li><strong>Квоты пользователей:</strong> Реализация системы лимитов дискового пространства на уровне модели пользователя</li>
-                        <li><strong>Валидация файлов:</strong> Проверка MIME-типов, размера, расширений перед сохранением</li>
-                        <li><strong>Эффективное хранение:</strong> Метаданные в БД, файлы в файловой системе с хэшированными путями</li>
+                        <li><strong>PostgreSQL с индексацией:</strong> Использование production БД с индексами на полях поиска (имя, тип, дата загрузки, размер)</li>
+                        <li><strong>Квоты пользователей:</strong> Реализация системы лимитов дискового пространства на уровне модели пользователя с проверкой перед загрузкой</li>
+                        <li><strong>Валидация файлов:</strong> Проверка MIME-типов, размера файлов, расширений перед сохранением на сервере</li>
+                        <li><strong>Эффективное хранение:</strong> Метаданные в БД, файлы в файловой системе с хэшированными путями для предотвращения коллизий</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-shield-alt"></i> Задача 3: Безопасность и авторизация</h4>
-                    <p><strong>Проблема:</strong> Защита API от несанкционированного доступа, безопасная обработка загружаемых файлов, защита от распространенных веб-атак.</p>
+                    <p><strong>Проблема:</strong> Защита API от несанкционированного доступа, безопасная обработка загружаемых файлов, защита от распространенных веб-атак (XSS, CSRF, SQL injection).</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>JWT аутентификация:</strong> Реализация через django-rest-framework-simplejwt с refresh токенами</li>
-                        <li><strong>Защита от XSS/CSRF:</strong> Использование встроенных механизмов Django и Django REST Framework</li>
-                        <li><strong>Безопасность файлов:</strong> Проверка загружаемых файлов на вирусы (в идеале), валидация расширений и MIME-типов</li>
+                        <li><strong>JWT аутентификация:</strong> Реализация через django-rest-framework-simplejwt с refresh токенами и настройкой времени жизни</li>
+                        <li><strong>Защита от XSS/CSRF:</strong> Использование встроенных механизмов Django и Django REST Framework, Content Security Policy</li>
+                        <li><strong>Безопасность файлов:</strong> Проверка загружаемых файлов на вирусы (в идеале), валидация расширений и MIME-типов, изоляция загрузок</li>
                         <li><strong>Защитные заголовки Nginx:</strong> Настройка <code>X-Frame-Options</code>, <code>X-Content-Type-Options</code>, <code>HSTS</code></li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-code-branch"></i> Задача 4: Автоматизация деплоя и мониторинга</h4>
-                    <p><strong>Проблема:</strong> Ручное обновление fullstack приложения (backend + frontend) сложно и подвержено ошибкам.</p>
+                    <p><strong>Проблема:</strong> Ручное обновление fullstack приложения (backend + frontend) сложно, подвержено ошибкам и требует много времени.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Скрипт автоматического деплоя:</strong> Создание <code>deploy-and-restart.sh</code>, который выполняет полный цикл обновления</li>
-                        <li><strong>Мониторинг через systemd:</strong> Использование <code>journalctl -u cloud-storage -f</code> для просмотра логов</li>
-                        <li><strong>Резервное копирование:</strong> Реализация скриптов для бекапа базы данных и медиафайлов</li>
-                        <li><strong>Проверка здоровья:</strong> Настройка проверок доступности API и статических файлов</li>
+                        <li><strong>Скрипт автоматического деплоя:</strong> Создание <code>deploy-and-restart.sh</code>, который выполняет полный цикл обновления (git pull, миграции, сборка React, перезапуск сервисов)</li>
+                        <li><strong>Мониторинг через systemd:</strong> Использование <code>journalctl -u cloud-storage -f</code> для просмотра логов в реальном времени</li>
+                        <li><strong>Резервное копирование:</strong> Реализация скриптов для бекапа базы данных PostgreSQL и медиафайлов с ротацией</li>
+                        <li><strong>Проверка здоровья:</strong> Настройка health-check эндпоинтов для мониторинга доступности API и статических файлов</li>
                     </ul>
                 </div>
             </div>
@@ -396,12 +503,25 @@
                 </a>
 
                 <a href="https://github.com/mikhailbbk/cloud_storage/blob/server-version/README.md" class="project-link-btn btn-secondary" target="_blank">
-                    <i class="fas fa-book"></i> Документация
+                    <i class="fas fa-book"></i> Документация проекта
                 </a>
 
                 <a href="https://194.67.124.178:8443" class="project-link-btn btn-secondary" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Демо (порт 8443)
+                    <i class="fas fa-external-link-alt"></i> Демо версия (порт 8443)
                 </a>
+            </div>
+            
+            <div class="solved-problems" style="margin-top: 2rem;">
+                <div class="problem-item">
+                    <h4><i class="fas fa-info-circle"></i> Технические детали проекта</h4>
+                    <p><strong>Дата запуска в production:</strong> Январь 2025</p>
+                    <p><strong>Размер хранилища:</strong> 10GB на VPS (расширяемо)</p>
+                    <p><strong>Максимальный размер файла:</strong> 100MB (настраивается)</p>
+                    <p><strong>Поддерживаемые форматы:</strong> Все типы файлов с валидацией</p>
+                    <p><strong>Аутентификация:</strong> JWT tokens + Session cookies</p>
+                    <p><strong>База данных:</strong> PostgreSQL 12+ с регулярными бекапами</p>
+                    <p><strong>Шифрование:</strong> SSL/TLS на порту 8443</p>
+                </div>
             </div>
         </div>
     </div>
@@ -423,6 +543,34 @@
                         }
                     }
                 });
+            });
+            
+            // Ленивая загрузка изображений
+            const images = document.querySelectorAll('img');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+            
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => img.classList.add('loaded'));
+                    imageObserver.observe(img);
+                }
             });
         });
     </script>

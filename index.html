@@ -17,6 +17,11 @@
     <meta name="twitter:title" content="Михаил Бабков | Python Backend Developer">
     <meta name="twitter:description" content="Портфолио Python разработчика с полным циклом production-развертывания">
     
+    <!-- SEO улучшения -->
+    <link rel="canonical" href="https://mikhailbbk.github.io">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Михаил Бабков">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -29,10 +34,10 @@
             --dark-color: #2c3e50;
             --text-color: #333;
             --text-light: #666;
-            --shadow: 0 5px 15px rgba(0,0,0,0.1);
-            --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
-            --border-radius: 10px;
-            --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 28px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         /* Плавная прокрутка */
@@ -48,18 +53,25 @@
             background-color: var(--light-color);
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         /* Навигация */
         header {
             background: rgba(44, 62, 80, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             padding: 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(44, 62, 80, 0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
 
         nav {
@@ -120,6 +132,15 @@
             width: 80%;
         }
 
+        nav a.active {
+            color: var(--primary-color);
+            background: rgba(255,255,255,0.1);
+        }
+
+        nav a.active::after {
+            width: 80%;
+        }
+
         /* Герой секция */
         .hero {
             position: relative;
@@ -165,6 +186,8 @@
             -webkit-text-fill-color: transparent;
             font-weight: 700;
             line-height: 1.2;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
         }
 
         .hero-subtitle {
@@ -176,6 +199,8 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
         }
 
         .hero-highlights {
@@ -184,6 +209,8 @@
             gap: 3rem;
             margin: 3rem 0;
             flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            opacity: 0;
         }
 
         .highlight-item {
@@ -204,6 +231,12 @@
             border-radius: 50%;
             margin-left: auto;
             margin-right: auto;
+            transition: var(--transition);
+        }
+
+        .highlight-item:hover .highlight-icon {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.2);
         }
 
         .highlight-item p {
@@ -218,6 +251,8 @@
             justify-content: center;
             margin-top: 3rem;
             flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+            opacity: 0;
         }
 
         .btn-primary {
@@ -233,6 +268,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -254,6 +290,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
+            cursor: pointer;
         }
 
         .btn-secondary:hover {
@@ -297,7 +334,7 @@
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -307,7 +344,7 @@
             overflow: hidden;
             transition: var(--transition);
             border: none;
-            min-height: 400px;
+            min-height: 420px;
             display: flex;
             flex-direction: column;
             background: white;
@@ -315,10 +352,12 @@
             padding: 2rem;
             box-shadow: var(--shadow);
             border-left: 4px solid var(--primary-color);
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
         }
 
@@ -335,6 +374,38 @@
             font-size: 1.6rem;
             font-weight: 600;
             text-align: center;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-date {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .project-status {
+            background: #27ae60;
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
         }
 
         .project-card p {
@@ -362,28 +433,18 @@
             font-weight: 500;
         }
 
-        .project-status {
-            display: inline-block;
-            background: #27ae60;
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-left: 0.5rem;
-            vertical-align: middle;
-            font-weight: 500;
-        }
-
         .project-links-container {
             display: flex;
             gap: 1rem;
             margin-top: auto;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .project-link-details {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             background: var(--primary-color);
             color: white;
@@ -394,17 +455,21 @@
             font-size: 1rem;
             transition: var(--transition);
             flex: 1;
-            justify-content: center;
+            min-width: 0;
+            text-align: center;
+            cursor: pointer;
         }
 
         .project-link-details:hover {
             background: #2980b9;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .project-link-github {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             background: #333;
             color: white;
@@ -415,12 +480,15 @@
             font-size: 1rem;
             transition: var(--transition);
             flex: 1;
-            justify-content: center;
+            min-width: 0;
+            text-align: center;
+            cursor: pointer;
         }
 
         .project-link-github:hover {
             background: #222;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         /* Секция технологий */
@@ -451,6 +519,8 @@
             background: white;
             border-radius: var(--border-radius);
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .tech-icon-item:hover {
@@ -502,6 +572,10 @@
             line-height: 1.7;
         }
 
+        .about-text strong {
+            color: var(--primary-color);
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -515,6 +589,8 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-top: 3px solid var(--primary-color);
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .skill-category:hover {
@@ -549,9 +625,11 @@
             border-bottom: none;
         }
 
-        .skill-category i {
-            color: #27ae60;
-            font-size: 1.1rem;
+        .skill-category li i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            min-width: 24px;
+            text-align: center;
         }
 
         /* Секция контактов */
@@ -586,6 +664,8 @@
             transition: var(--transition);
             min-width: 250px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .contact-card:hover {
@@ -617,6 +697,7 @@
             gap: 0.5rem;
             justify-content: center;
             margin-bottom: 0.5rem;
+            cursor: pointer;
         }
 
         .contact-link:hover {
@@ -660,6 +741,7 @@
             color: white;
             text-align: center;
             padding: 3rem 2rem;
+            position: relative;
         }
 
         footer a {
@@ -691,9 +773,17 @@
             }
         }
 
-        .animate {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        body {
+            animation: fadeIn 0.8s ease-out;
         }
 
         /* Порядок проектов */
@@ -702,6 +792,20 @@
         .project-card:nth-child(3) { animation-delay: 0.2s; }
 
         /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.6rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -741,6 +845,11 @@
 
             .project-grid {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .project-card {
+                margin-bottom: 1rem;
             }
 
             .cta-buttons {
@@ -782,15 +891,39 @@
             .about-text {
                 padding: 1.5rem;
             }
+            
+            footer {
+                padding: 2rem 1rem;
+                min-height: 180px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
             .hero h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.3;
             }
 
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                line-height: 1.4;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            nav a {
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
             }
 
             .tech-icons {
@@ -798,14 +931,27 @@
             }
         }
 
-        /* Активная ссылка в навигации */
-        nav a.active {
-            color: var(--primary-color);
-            background: rgba(255,255,255,0.1);
+        @media (min-width: 481px) and (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
         }
 
-        nav a.active::after {
-            width: 80%;
+        /* Оптимизация изображений */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
         }
     </style>
 </head>
@@ -814,7 +960,7 @@
         <nav>
             <h1><i class="fas fa-code"></i> Михаил Бабков</h1>
             <ul>
-                <li><a href="#home">Главная</a></li>
+                <li><a href="#home" class="active">Главная</a></li>
                 <li><a href="#projects">Проекты</a></li>
                 <li><a href="#tech">Технологии</a></li>
                 <li><a href="#about">Обо мне</a></li>
@@ -865,11 +1011,15 @@
         
         <div class="project-grid">
             <!-- Проект 1: QuizPlease Autoreg -->
-            <div class="project-card animate">
+            <div class="project-card">
                 <div class="project-icon">
                     <i class="fas fa-robot"></i>
                 </div>
-                <h3>QuizPlease Autoreg <span class="project-status">Production</span></h3>
+                <h3>QuizPlease Autoreg</h3>
+                <div class="project-meta">
+                    <span class="project-date"><i class="far fa-calendar"></i> 2025</span>
+                    <span class="project-status"><i class="fas fa-circle"></i> Production</span>
+                </div>
                 <p>Система автоматического мониторинга расписания игр с отправкой уведомлений в Telegram. Парсинг данных, обработка, автоматический деплой через CI/CD.</p>
                 <div class="tech-stack">
                     <span>Python 3.11</span>
@@ -890,11 +1040,15 @@
             </div>
 
             <!-- Проект 2: Cloud Storage -->
-            <div class="project-card animate">
+            <div class="project-card">
                 <div class="project-icon">
                     <i class="fas fa-cloud-upload-alt"></i>
                 </div>                
-                <h3>Облачное хранилище (Fullstack)<span class="project-status">Production</span></h3>
+                <h3>Облачное хранилище (Fullstack)</h3>
+                <div class="project-meta">
+                    <span class="project-date"><i class="far fa-calendar"></i> 2025</span>
+                    <span class="project-status"><i class="fas fa-circle"></i> Production</span>
+                </div>
                 <p>Fullstack веб-приложение (Django REST API + React) для безопасного хранения файлов. Включает production-развертывание на VPS с Nginx и SSL.</p>
                 <div class="tech-stack">
                     <span>Python 3.11</span>
@@ -915,11 +1069,15 @@
             </div>
 
             <!-- Проект 3: Temple Site -->
-            <div class="project-card animate">
+            <div class="project-card">
                 <div class="project-icon">
                     <i class="fas fa-church"></i>
                 </div>
-                <h3>Сайт храма <span class="project-status">Production</span></h3>
+                <h3>Сайт храма</h3>
+                <div class="project-meta">
+                    <span class="project-date"><i class="far fa-calendar"></i> 2025</span>
+                    <span class="project-status"><i class="fas fa-circle"></i> Production</span>
+                </div>
                 <p>Официальный сайт Казанского храма на Flask с адаптивным дизайном. Полный цикл production-развертывания на VPS (Flask + Nginx + Gunicorn + CI/CD).</p>
                 <div class="tech-stack">
                     <span>Python 3.11</span>
@@ -1004,54 +1162,56 @@
                 <h3><i class="fas fa-user-tie"></i> Профессиональный профиль</h3>
                 <p>Python разработчик с фокусом на backend разработку и DevOps инженерию. Специализируюсь на создании масштабируемых веб-приложений, парсинге данных и автоматизации рабочих процессов.</p>
                 
+                <p><strong>Цель:</strong> Ищу позицию Junior/Middle Python Backend Developer в команде, где смогу применять свои навыки и развиваться профессионально. Готов к решению сложных задач, изучению новых технологий и участию в интересных проектах.</p>
+                
                 <p>Имею опыт полного цикла разработки — от проектирования архитектуры и написания кода до production-развертывания на Linux серверах и настройки CI/CD пайплайнов. Каждый проект проходит через все этапы: разработка, тестирование, деплой и мониторинг.</p>
                 
-                <p>Основные компетенции: разработка REST API на Django и Flask, работа с базами данных PostgreSQL, настройка серверной инфраструктуры (Nginx, Gunicorn, Systemd), реализация систем парсинга данных и автоматизация процессов.</p>
+                <p><strong>Дата начала разработки:</strong> 2024 год. <strong>Проекты в production:</strong> с 2025 года.</p>
             </div>
             
             <div class="skills-grid">
                 <div class="skill-category">
                     <h4><i class="fas fa-server"></i> Backend Development</h4>
                     <ul>
-                        <li><i class="fas fa-check"></i> Python 3.11+, Django, Django REST Framework</li>
-                        <li><i class="fas fa-check"></i> Flask для легковесных и быстрых приложений</li>
-                        <li><i class="fas fa-check"></i> JWT аутентификация и системы безопасности</li>
-                        <li><i class="fas fa-check"></i> Парсинг данных (BeautifulSoup, Requests)</li>
-                        <li><i class="fas fa-check"></i> Проектирование и документирование REST API</li>
+                        <li><i class="fab fa-python"></i> Python 3.11+, Django, Django REST Framework</li>
+                        <li><i class="fas fa-flask"></i> Flask для легковесных и быстрых приложений</li>
+                        <li><i class="fas fa-shield-alt"></i> JWT аутентификация и системы безопасности</li>
+                        <li><i class="fas fa-code"></i> Парсинг данных (BeautifulSoup, Requests)</li>
+                        <li><i class="fas fa-code-branch"></i> Проектирование и документирование REST API</li>
                     </ul>
                 </div>
                 
                 <div class="skill-category">
                     <h4><i class="fas fa-database"></i> Базы данных</h4>
                     <ul>
-                        <li><i class="fas fa-check"></i> PostgreSQL для production окружений</li>
-                        <li><i class="fas fa-check"></i> SQLite для разработки и тестирования</li>
-                        <li><i class="fas fa-check"></i> Создание миграций и проектирование схем</li>
-                        <li><i class="fas fa-check"></i> Оптимизация запросов и индексация</li>
-                        <li><i class="fas fa-check"></i> Стратегии резервного копирования</li>
+                        <li><i class="fas fa-database"></i> PostgreSQL для production окружений</li>
+                        <li><i class="fas fa-database"></i> SQLite для разработки и тестирования</li>
+                        <li><i class="fas fa-project-diagram"></i> Создание миграций и проектирование схем</li>
+                        <li><i class="fas fa-tachometer-alt"></i> Оптимизация запросов и индексация</li>
+                        <li><i class="fas fa-hdd"></i> Стратегии резервного копирования</li>
                     </ul>
                 </div>
                 
                 <div class="skill-category">
                     <h4><i class="fas fa-cloud"></i> DevOps & Infrastructure</h4>
                     <ul>
-                        <li><i class="fas fa-check"></i> Администрирование Ubuntu Server</li>
-                        <li><i class="fas fa-check"></i> Настройка Nginx как reverse proxy</li>
-                        <li><i class="fas fa-check"></i> Развертывание на Gunicorn/Uvicorn</li>
-                        <li><i class="fas fa-check"></i> Управление сервисами через Systemd</li>
-                        <li><i class="fas fa-check"></i> CI/CD с GitHub Actions</li>
-                        <li><i class="fas fa-check"></i> Настройка безопасности и брандмауэров</li>
+                        <li><i class="fab fa-ubuntu"></i> Администрирование Ubuntu Server</li>
+                        <li><i class="fas fa-server"></i> Настройка Nginx как reverse proxy</li>
+                        <li><i class="fas fa-cogs"></i> Развертывание на Gunicorn/Uvicorn</li>
+                        <li><i class="fas fa-cog"></i> Управление сервисами через Systemd</li>
+                        <li><i class="fab fa-github"></i> CI/CD с GitHub Actions</li>
+                        <li><i class="fas fa-shield-alt"></i> Настройка безопасности и брандмауэров</li>
                     </ul>
                 </div>
                 
                 <div class="skill-category">
                     <h4><i class="fas fa-tools"></i> Инструменты</h4>
                     <ul>
-                        <li><i class="fas fa-check"></i> Git, GitHub для контроля версий</li>
-                        <li><i class="fas fa-check"></i> Docker для контейнеризации</li>
-                        <li><i class="fas fa-check"></i> Bash-скрипты для автоматизации</li>
-                        <li><i class="fas fa-check"></i> Postman для тестирования API</li>
-                        <li><i class="fas fa-check"></i> VS Code как основная среда разработки</li>
+                        <li><i class="fab fa-git-alt"></i> Git, GitHub для контроля версий</li>
+                        <li><i class="fab fa-docker"></i> Docker для контейнеризации</li>
+                        <li><i class="fas fa-terminal"></i> Bash-скрипты для автоматизации</li>
+                        <li><i class="fas fa-code"></i> Postman для тестирования API</li>
+                        <li><i class="fas fa-code"></i> VS Code как основная среда разработки</li>
                     </ul>
                 </div>
             </div>
@@ -1093,7 +1253,7 @@
                 <i class="fas fa-file-pdf"></i>
                 <h3>Резюме</h3>
                 <a href="Resume.pdf" class="contact-link" target="_blank">
-                    <i class="fas fa-file-pdf"></i> Открыть резюме
+                    <i class="fas fa-download"></i> Скачать (PDF)
                 </a>
                 <p>Полная информация о навыках и опыте</p>
             </div>
@@ -1123,55 +1283,71 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Настройка Intersection Observer для анимаций
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
+            const fadeElements = document.querySelectorAll('.skill-category, .project-card, .tech-icon-item, .contact-card');
+            
+            const fadeInOnScroll = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        fadeInOnScroll.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
-
-            // Добавляем элементы для наблюдения
-            document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
-            document.querySelectorAll('.tech-icon-item').forEach(icon => observer.observe(icon));
-            document.querySelectorAll('.skill-category').forEach(skill => observer.observe(skill));
-            document.querySelectorAll('.contact-card').forEach(card => observer.observe(card));
-            document.querySelectorAll('.highlight-item').forEach(item => observer.observe(item));
-
-            // Подсветка активного раздела при скролле
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-            function highlightNavLink() {
-                let scrollY = window.pageYOffset;
-
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                fadeInOnScroll.observe(el);
+            });
+            
+            // Эффект для навигации при скролле
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Добавляем/убираем класс при скролле
+                if (scrollTop > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Подсветка активного раздела
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('nav a[href^="#"]');
+                
+                let current = '';
                 sections.forEach(section => {
-                    const sectionHeight = section.offsetHeight;
                     const sectionTop = section.offsetTop - 100;
-                    const sectionId = section.getAttribute('id');
-                    const navLink = document.querySelector(`nav a[href="#${sectionId}"]`);
-
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        if (navLink) navLink.classList.add('active');
+                    const sectionHeight = section.clientHeight;
+                    if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
                     }
                 });
-            }
-
-            window.addEventListener('scroll', highlightNavLink);
-
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                lastScrollTop = scrollTop;
+            });
+            
             // Плавная прокрутка для навигации
-            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('nav a[href^="#"], .btn-primary[href^="#"], .btn-secondary[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
                     const targetId = this.getAttribute('href');
                     if (targetId.startsWith('#')) {
+                        e.preventDefault();
                         const targetElement = document.querySelector(targetId);
                         if (targetElement) {
                             window.scrollTo({
@@ -1179,44 +1355,53 @@
                                 behavior: 'smooth'
                             });
                             
+                            // Обновляем активную ссылку
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            this.classList.add('active');
+                            
                             // Обновляем URL без перезагрузки
                             history.pushState(null, '', targetId);
                         }
                     }
                 });
             });
-
-            // Анимация для заголовка при загрузке
-            const heroTitle = document.querySelector('.hero h2');
-            const heroSubtitle = document.querySelector('.hero-subtitle');
-            const heroHighlights = document.querySelector('.hero-highlights');
-            const ctaButtons = document.querySelector('.cta-buttons');
-
-            if (heroTitle) {
-                setTimeout(() => {
-                    heroTitle.style.animation = 'fadeInUp 0.8s ease-out forwards';
-                }, 300);
-            }
-
-            if (heroSubtitle) {
-                setTimeout(() => {
-                    heroSubtitle.style.animation = 'fadeInUp 0.8s ease-out 0.2s forwards';
-                    heroSubtitle.style.opacity = '0';
-                }, 500);
-            }
-
-            if (heroHighlights) {
-                setTimeout(() => {
-                    heroHighlights.style.animation = 'fadeInUp 0.8s ease-out 0.4s forwards';
-                    heroHighlights.style.opacity = '0';
-                }, 700);
-            }
-
-            if (ctaButtons) {
-                setTimeout(() => {
-                    ctaButtons.style.animation = 'fadeInUp 0.8s ease-out 0.6s forwards';
-                    ctaButtons.style.opacity = '0';
-                }, 900);
+            
+            // Ленивая загрузка изображений
+            const images = document.querySelectorAll('img');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+            
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => img.classList.add('loaded'));
+                    imageObserver.observe(img);
+                }
+            });
+            
+            // Инициализация активной ссылки при загрузке
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                const activeLink = document.querySelector(`nav a[href="${currentHash}"]`);
+                if (activeLink) {
+                    document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                    activeLink.classList.add('active');
+                }
             }
         });
     </script>

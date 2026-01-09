@@ -234,8 +234,80 @@
             font-weight: bold;
         }
 
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .screenshot-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .screenshot-container {
+            width: 100%;
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c3e50;
+            padding: 0;
+            margin: 0;
+        }
+
+        .screenshot-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .screenshot-caption {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
+            color: #2c3e50;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .system-architecture {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-family: 'Courier New', Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 992px) {
+            .screenshot-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .architecture-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshot-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -261,11 +333,12 @@
 
         <div class="project-header">
             <h1 class="project-title">Казанский храм - Официальный сайт <span class="status-badge online"><i class="fas fa-circle"></i> Production - Онлайн</span></h1>
-            <p class="project-subtitle">Профессиональный информационный портал религиозной организации с адаптивным дизайном и полным циклом production-развертывания</p>
+            <p class="project-subtitle">Профессиональный информационный портал на Flask с единой архитектурой страниц, адаптивным дизайном и полным CI/CD циклом production-развертывания</p>
 
             <div class="tech-stack">
-                <span>Python</span>
-                <span>Flask</span>
+                <span>Python 3.11</span>
+                <span>Flask 3.1</span>
+                <span>Jinja2</span>
                 <span>HTML5/CSS3</span>
                 <span>JavaScript</span>
                 <span>Nginx</span>
@@ -278,105 +351,171 @@
         </div>
 
         <div class="section">
-            <h2>🚀 Основные функции</h2>
+            <h2>🚀 Основные функции и архитектурные решения</h2>
             <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> <strong>Полная информация о храме</strong> — история, духовенство, расписание богослужений, контакты, святыни</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Интерактивная фотогалерея</strong> — модальные окна с полноэкранным просмотром и навигацией</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Система пожертвований</strong> — банковские реквизиты, информация о срочных проектах (водоотведение)</li>
-                <li><i class="fas fa-check-circle"></i> <strong>100% адаптивный дизайн</strong> — оптимизация под мобильные устройства, планшеты и десктопы</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Production-развертывание</strong> — автономный VPS сервер с Nginx + Gunicorn + Systemd</li>
-                <li><i class="fas fa-check-circle"></i> <strong>CI/CD пайплайн</strong> — автоматический деплой через GitHub Actions при каждом коммите</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Безопасная архитектура</strong> — изолированный VPS, настройка UFW брандмауэра, резервное копирование</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Единая архитектура страниц</strong> — Все информационные разделы в одном шаблоне с динамической загрузкой через Jinja2</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Flask микрофреймворк</strong> — Легковесное и быстрое приложение на Python 3.11 с минимальной зависимостью</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Интерактивные фотогалереи</strong> — Полноэкранный просмотр с навигацией клавишами и тач-жестами на чистом JavaScript</li>
+                <li><i class="fas fa-check-circle"></i> <strong>100% адаптивный дизайн</strong> — 3 брейкпоинта (mobile, tablet, desktop) с оптимизацией изображений</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Полный CI/CD цикл</strong> — Автоматический деплой через GitHub Actions при каждом коммите в main ветку</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Production-ready инфраструктура</strong> — VPS с Nginx как reverse proxy, Gunicorn WSGI сервер, Systemd управление</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Безопасная конфигурация</strong> — Изолированное окружение, SSH-ключи для доступа, настройка брандмауэра</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Система пожертвований</strong> — Банковские реквизиты и информация о срочных проектах храма</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>⚙️ Архитектура системы</h2>
+            <h2>📱 Скриншоты проекта</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <div class="screenshot-container">
+                        <img src="../assets/temple-site/temple-homepage.jpg" alt="Главная страница сайта храма">
+                    </div>
+                    <p class="screenshot-caption">Главная страница с фото храма и навигацией</p>
+                </div>
+
+                <div class="screenshot-item">
+                    <div class="screenshot-container">
+                        <img src="../assets/temple-site/temple-mobile.jpg" alt="Мобильная версия сайта">
+                    </div>
+                    <p class="screenshot-caption">Адаптивная мобильная версия</p>
+                </div>
+
+                <div class="screenshot-item">
+                    <div class="screenshot-container">
+                        <img src="../assets/temple-site/shrines.jpg" alt="Страница святынь храма">
+                    </div>
+                    <p class="screenshot-caption">Раздел "Святыни" с описанием икон</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Архитектура системы и структура проекта</h2>
             <div class="architecture-grid">
                 <div class="architecture-item">
                     <h3>📁 Структура проекта</h3>
                     <ul>
-                        <li><code>app.py</code> — основное Flask приложение</li>
-                        <li><code>templates/</code> — HTML шаблоны (Jinja2)</li>
-                        <li><code>static/</code> — CSS, JavaScript, изображения</li>
-                        <li><code>requirements.txt</code> — зависимости Python</li>
-                        <li><code>.github/workflows/</code> — CI/CD конфигурация</li>
-                        <li><code>temple-site.service</code> — systemd конфигурация</li>
+                        <li><code>app.py</code> — Основное Flask приложение с маршрутизацией</li>
+                        <li><code>requirements.txt</code> — Зависимости Python (Flask, gunicorn)</li>
+                        <li><code>.github/workflows/deploy.yml</code> — CI/CD пайплайн GitHub Actions</li>
+                        <li><code>templates/about.html</code> — Единый шаблон для всех разделов</li>
+                        <li><code>static/css/style.css</code> — Адаптивные стили (1600+ строк)</li>
+                        <li><code>static/images/</code> — Оптимизированные медиафайлы храма</li>
+                        <li><code>temple-site.service</code> — Конфигурация Systemd сервиса</li>
                     </ul>
                 </div>
 
                 <div class="architecture-item">
-                    <h3>🔄 CI/CD Pipeline</h3>
+                    <h3>🎨 Frontend & Дизайн</h3>
                     <ul>
-                        <li>Push в main ветку на GitHub</li>
-                        <li>Автозапуск GitHub Actions</li>
-                        <li>SSH подключение к production-серверу</li>
-                        <li>Обновление кода из репозитория</li>
-                        <li>Перезапуск systemd сервиса</li>
-                        <li>Валидация конфигурации Nginx</li>
+                        <li><strong>HTML5 + Jinja2 шаблоны</strong> — Семантическая разметка</li>
+                        <li><strong>CSS3 с Flexbox/Grid</strong> — Современная адаптивная верстка</li>
+                        <li><strong>Vanilla JavaScript</strong> — Галереи и интерактив без зависимостей</li>
+                        <li><strong>3 брейкпоинта</strong> — Mobile (до 768px), Tablet (769-1024px), Desktop (от 1025px)</li>
+                        <li><strong>Оптимизация изображений</strong> — Автоматическое сжатие и адаптивные размеры</li>
                     </ul>
                 </div>
 
                 <div class="architecture-item">
-                    <h3>🔧 Технологии</h3>
+                    <h3>🔧 DevOps & Инфраструктура</h3>
                     <ul>
-                        <li><strong>Python 3.11</strong> — основной язык</li>
-                        <li><strong>Flask 3.1</strong> — микрофреймворк</li>
-                        <li><strong>Gunicorn</strong> — WSGI сервер</li>
-                        <li><strong>Nginx 1.18+</strong> — веб-сервер и reverse proxy</li>
-                        <li><strong>Systemd</strong> — управление сервисом</li>
-                        <li><strong>Ubuntu Server 20.04</strong> — production хостинг</li>
+                        <li><strong>Ubuntu Server 20.04 LTS</strong> — Production VPS на reg.ru</li>
+                        <li><strong>GitHub Actions CI/CD</strong> — Автоматический тестирование и деплой</li>
+                        <li><strong>Nginx 1.18+</strong> — Веб-сервер и reverse proxy</li>
+                        <li><strong>Gunicorn 23.0.0</strong> — WSGI сервер для production</li>
+                        <li><strong>Systemd</strong> — Управление сервисом с автозапуском</li>
+                        <li><strong>UFW брандмауэр</strong> — Настройка безопасности сервера</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="system-architecture">
+                <strong>Системная архитектура (production):</strong><br><br>
+                Client → Nginx (порт 80) → Gunicorn WSGI → Flask App<br>
+                │<br>
+                ├── Static Files (HTML, CSS, JavaScript)<br>
+                └── Media Files (Фотографии храма)<br>
+                <br>
+                <strong>CI/CD Pipeline:</strong><br>
+                Push в main → GitHub Actions → SSH на сервер → Обновление кода → Перезапуск сервиса
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔍 Ключевые технические решения и решенные задачи</h2>
+            <div class="solved-problems">
+                <div class="problem-item">
+                    <h4><i class="fas fa-code"></i> Задача 1: Единая архитектура страниц на Flask + Jinja2</h4>
+                    <p><strong>Проблема:</strong> Необходимо было создать 8+ информационных разделов с единым дизайном без дублирования кода.</p>
+                    <p><strong>Решение:</strong></p>
+                    <ul class="solution-steps">
+                        <li><strong>Единый шаблон about.html:</strong> Все разделы используют один шаблон с динамическим контентом</li>
+                        <li><strong>Jinja2 условные блоки:</strong> Отображение контента в зависимости от текущего раздела</li>
+                        <li><strong>Flask маршрутизация:</strong> Простые эндпоинты для каждого раздела (/about, /clergy, /schedule и т.д.)</li>
+                        <li><strong>Результат:</strong> Легкое добавление новых разделов и единый код для всего сайта</li>
+                    </ul>
+                </div>
+
+                <div class="problem-item">
+                    <h4><i class="fas fa-mobile-alt"></i> Задача 2: Создание 100% адаптивного дизайна</h4>
+                    <p><strong>Проблема:</strong> Сайт должен одинаково хорошо отображаться на всех устройствах от смартфонов до десктопов.</p>
+                    <p><strong>Решение:</strong></p>
+                    <ul class="solution-steps">
+                        <li><strong>Mobile-first подход:</strong> Верстка начиналась с мобильной версии</li>
+                        <li><strong>3 четких брейкпоинта:</strong> Отдельные стили для мобильных, планшетов и десктопов</li>
+                        <li><strong>Flexbox и CSS Grid:</strong> Современные технологии для гибкой верстки</li>
+                        <li><strong>Оптимизация изображений:</strong> Автоматическое сжатие и адаптивные теги picture/source</li>
+                    </ul>
+                </div>
+
+                <div class="problem-item">
+                    <h4><i class="fas fa-server"></i> Задача 3: Production-развертывание с полным CI/CD циклом</h4>
+                    <p><strong>Проблема:</strong> Ручное обновление кода на сервере занимало 15-20 минут и могло привести к ошибкам.</p>
+                    <p><strong>Решение:</strong></p>
+                    <ul class="solution-steps">
+                        <li><strong>GitHub Actions workflow:</strong> Автоматический деплой при каждом коммите в main</li>
+                        <li><strong>Безопасное SSH-подключение:</strong> Использование SSH-ключей через GitHub Secrets</li>
+                        <li><strong>Systemd сервис:</strong> Настройка автозапуска, мониторинга и автоматического перезапуска</li>
+                        <li><strong>Архитектура Nginx + Gunicorn:</strong> Nginx для статики и SSL, Gunicorn как WSGI сервер</li>
+                        <li><strong>Результат:</strong> Время деплоя сократилось до 2-3 минут с полной автоматизацией</li>
+                    </ul>
+                </div>
+
+                <div class="problem-item">
+                    <h4><i class="fas fa-shield-alt"></i> Задача 4: Обеспечение безопасности и отказоустойчивости</h4>
+                    <p><strong>Проблема:</strong> Требовалась стабильная работа сайта 24/7 с защитой от возможных атак.</p>
+                    <p><strong>Решение:</strong></p>
+                    <ul class="solution-steps">
+                        <li><strong>Выделенный VPS:</strong> Изолированное окружение на Ubuntu Server</li>
+                        <li><strong>Настройка UFW брандмауэра:</strong> Разрешение только необходимых портов (SSH, HTTP, HTTPS)</li>
+                        <li><strong>Systemd настройки безопасности:</strong> Restart=always, RestartSec=10, PrivateTmp=true</li>
+                        <li><strong>Резервное копирование:</strong> Автоматическое создание бэкапов через workflow</li>
+                        <li><strong>Мониторинг логов:</strong> Использование journalctl для отслеживания ошибок</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🔍 Решенные задачи и принятые решения</h2>
-            <div class="solved-problems">
-                <div class="problem-item">
-                    <h4><i class="fas fa-tasks"></i> Задача 1: Создание адаптивного дизайна для всех устройств</h4>
-                    <p><strong>Проблема:</strong> Сайт должен одинаково хорошо отображаться на десктопах, планшетах и мобильных устройствах.</p>
-                    <p><strong>Решение:</strong></p>
-                    <ul class="solution-steps">
-                        <li><strong>Mobile-first подход:</strong> Верстка начиналась с мобильной версии</li>
-                        <li><strong>3 брейкпоинта:</strong> Медиа-запросы для mobile (до 768px), tablet (769-1024px), desktop (от 1025px)</li>
-                        <li><strong>Flexbox и Grid:</strong> Современные CSS технологии для гибкой верстки</li>
-                        <li><strong>Оптимизация изображений:</strong> Автоматическое сжатие и адаптивные размеры</li>
-                    </ul>
-                </div>
-
-                <div class="problem-item">
-                    <h4><i class="fas fa-server"></i> Задача 2: Production-развертывание с 99.9% uptime</h4>
-                    <p><strong>Проблема:</strong> Требовалась стабильная работа сайта 24/7 с защитой от падений.</p>
-                    <p><strong>Решение:</strong></p>
-                    <ul class="solution-steps">
-                        <li><strong>Выделенный VPS:</strong> Ubuntu Server 20.04 LTS на reg.ru</li>
-                        <li><strong>Архитектура Nginx + Gunicorn:</strong> Nginx как reverse proxy для статики и SSL, Gunicorn как WSGI сервер</li>
-                        <li><strong>Systemd сервис:</strong> Автозапуск, мониторинг и автоматический перезапуск при ошибках</li>
-                        <li><strong>Настройки безопасности:</strong> Restart=always, RestartSec=10, PrivateTmp=true</li>
-                    </ul>
-                </div>
-
-                <div class="problem-item">
-                    <h4><i class="fas fa-robot"></i> Задача 3: Автоматизация деплоя через CI/CD</h4>
-                    <p><strong>Проблема:</strong> Ручное обновление кода на сервере занимало 15-20 минут и могло привести к ошибкам.</p>
-                    <p><strong>Решение:</strong></p>
-                    <ul class="solution-steps">
-                        <li><strong>GitHub Actions workflow:</strong> Автоматический деплой при push в main ветку</li>
-                        <li><strong>SSH-подключение к серверу:</strong> Безопасное обновление кода через secrets</li>
-                        <li><strong>Полный цикл обновления:</strong> Pull кода → установка зависимостей → перезапуск сервиса</li>
-                        <li><strong>Результат:</strong> Время деплоя сократилось до 2-3 минут</li>
-                    </ul>
-                </div>
-            </div>
+            <h2>📋 Информационные разделы сайта</h2>
+            <ul class="features-list">
+                <li><i class="fas fa-home"></i> <strong>Главная</strong> — Фото храма и быстрый доступ ко всем разделам</li>
+                <li><i class="fas fa-church"></i> <strong>О храме</strong> — История строительства и подробная информация</li>
+                <li><i class="fas fa-user-tie"></i> <strong>Духовенство</strong> — Контакты настоятеля и служителей</li>
+                <li><i class="fas fa-calendar-alt"></i> <strong>Расписание</strong> — Время богослужений и особые службы</li>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Контакты</strong> — Адрес, телефоны, навигация (Yandex/Google Maps)</li>
+                <li><i class="fas fa-camera"></i> <strong>Фото</strong> — Интерактивная фотогалерея (10+ фото храма)</li>
+                <li><i class="fas fa-cross"></i> <strong>Святыни</strong> — Чудотворные иконы и мощи с описанием</li>
+                <li><i class="fas fa-hand-holding-heart"></i> <strong>Помощь храму</strong> — Реквизиты для пожертвований и срочные проекты</li>
+            </ul>
         </div>
 
         <div class="section">
             <h2>🔗 Ссылки на проект</h2>
             <div class="project-links">
                 <a href="https://hram-oktyabrsky.ru" class="project-link-btn btn-primary" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Production сайт
+                    <i class="fas fa-external-link-alt"></i> Production сайт (Онлайн)
                 </a>
 
                 <a href="https://github.com/mikhailbbk/temple_site" class="project-link-btn btn-secondary" target="_blank">
@@ -384,10 +523,47 @@
                 </a>
 
                 <a href="https://github.com/mikhailbbk/temple_site/blob/main/README.md" class="project-link-btn btn-secondary" target="_blank">
-                    <i class="fas fa-book"></i> Документация
+                    <i class="fas fa-book"></i> Полная документация
                 </a>
+
+                <a href="https://github.com/mikhailbbk/temple_site/tree/main/.github/workflows" class="project-link-btn btn-secondary" target="_blank">
+                    <i class="fas fa-code-branch"></i> CI/CD Workflows
+                </a>
+            </div>
+            
+            <div class="solved-problems" style="margin-top: 2rem;">
+                <div class="problem-item">
+                    <h4><i class="fas fa-info-circle"></i> Технические детали проекта</h4>
+                    <p><strong>Дата запуска в production:</strong> Январь 2025</p>
+                    <p><strong>Аптайм:</strong> 99.9% (мониторинг через systemd и журналы)</p>
+                    <p><strong>Время загрузки страницы:</strong> &lt; 2 секунды (оптимизированные изображения и статика)</p>
+                    <p><strong>Размер кодовой базы:</strong> ~2.5 MB (включая оптимизированные изображения)</p>
+                    <p><strong>Частота обновлений:</strong> Автоматический деплой при каждом коммите в main ветку</p>
+                    <p><strong>Технологии:</strong> Python 3.11, Flask 3.1, Nginx, Gunicorn, Systemd, GitHub Actions</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Плавная прокрутка для всех ссылок внутри страницы
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

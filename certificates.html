@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сертификаты | Михаил Бабков</title>
+    
+    <!-- Мета-теги для SEO -->
+    <meta name="description" content="Сертификаты Михаила Бабкова: Fullstack-разработчик на Python, курсы по Python, JavaScript, React, Django">
+    <meta name="keywords" content="сертификаты, Python, JavaScript, React, Django, разработчик, квалификация">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .certificates-container {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            padding: 0 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .certificate-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-top: 4px solid #3498db;
+        }
+
+        .certificate-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .category-title {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .category-subtitle {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0;
+        }
+
+        .certificate-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .certificate-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .certificate-item:last-child {
+            border-bottom: none;
+        }
+
+        .certificate-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .certificate-name {
+            color: #2c3e50;
+            font-weight: 500;
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .certificate-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .certificate-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            background: #e8f4fc;
+        }
+
+        .certificate-link:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .total-certificates {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .total-number {
+            font-size: 3rem;
+            color: #3498db;
+            font-weight: bold;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .total-number i {
+            font-size: 2.5rem;
+        }
+
+        .total-text {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .github-note {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin: 2rem 0;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .github-link:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .certificates-container {
+                margin: 100px auto 30px;
+                padding: 0 15px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .certificate-category {
+                padding: 1.5rem;
+            }
+
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .category-icon {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 1.3rem;
+            }
+
+            .certificate-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+
+            .certificate-date {
+                align-self: flex-end;
+            }
+
+            .total-number {
+                font-size: 2.5rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><i class="fas fa-code"></i> Михаил Бабков</h1>
+            <ul>
+                <li><a href="index.html#home">Главная</a></li>
+                <li><a href="index.html#projects">Проекты</a></li>
+                <li><a href="index.html#tech">Технологии</a></li>
+                <li><a href="index.html#about">Обо мне</a></li>
+                <li><a href="#certificates" class="active">Сертификаты</a></li>
+                <li><a href="index.html#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="certificates-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> На главную
+        </a>
+
+        <div class="page-header">
+            <h1 class="page-title">Мои сертификаты</h1>
+            <p class="page-subtitle">Подтверждение профессиональных навыков и пройденного обучения в области Fullstack-разработки на Python</p>
+        </div>
+
+        <div class="total-certificates">
+            <div class="total-number">                
+                <span>12</span>                
+            </div>
+            <p class="total-text">
+                Завершено 12 профессиональных курсов, включая профессиональную переквалификацию по специальности "Fullstack-разработчик на Python"
+            </p>
+        </div>
+
+        <div class="certificates-grid">
+            <!-- Категория 1: Профессиональная переквалификация -->
+            <div class="certificate-category">
+                <div class="category-header">
+                    <div class="category-icon">              
+                    </div>
+                    <div>
+                        <h2 class="category-title">Профессиональная переквалификация</h2>
+                        <p class="category-subtitle">Нетология, 2025</p>
+                    </div>
+                </div>
+                <ul class="certificate-list">
+                    <li class="certificate-item">
+                        <span class="certificate-name">Fullstack-разработчик на Python</span>
+                        <span class="certificate-date">2025</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/FullStack/certificate.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Смотреть
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Категория 2: Python Backend Stack -->
+            <div class="certificate-category">
+                <div class="category-header">
+                    <div class="category-icon">                        
+                    </div>
+                    <div>
+                        <h2 class="category-title">Python Backend Stack</h2>
+                        <p class="category-subtitle">Серия из 6 курсов, 2023-2024</p>
+                    </div>
+                </div>
+                <ul class="certificate-list">
+                    <li class="certificate-item">
+                        <span class="certificate-name">Основы программирования языка Python</span>
+                        <span class="certificate-date">2023</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/Python/certificate1.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">Git – система контроля версий</span>
+                        <span class="certificate-date">2023</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/Python/certificate2.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">ООП и работа с API</span>
+                        <span class="certificate-date">2023</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/Python/certificate3.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">Базы данных для Python-разработчиков</span>
+                        <span class="certificate-date">2024</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/Python/certificate4.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">Профессиональная работа с Python</span>
+                        <span class="certificate-date">2024</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/Python/certificate5.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">Django: создание backend-приложений</span>
+                        <span class="certificate-date">2024</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/Python/certificate6.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Категория 3: JavaScript Frontend Stack -->
+            <div class="certificate-category">
+                <div class="category-header">
+                    <div class="category-icon">                        
+                    </div>
+                    <div>
+                        <h2 class="category-title">JavaScript Frontend Stack</h2>
+                        <p class="category-subtitle">Серия из 5 курсов, 2024-2025</p>
+                    </div>
+                </div>
+                <ul class="certificate-list">
+                    <li class="certificate-item">
+                        <span class="certificate-name">HTML и CSS: основы веб-верстки</span>
+                        <span class="certificate-date">2024</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/JavaScript/certificate1.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">JavaScript: основы работы в браузере</span>
+                        <span class="certificate-date">2024</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/JavaScript/certificate2.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">JavaScript: углубленный курс веб-разработки</span>
+                        <span class="certificate-date">2025</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/JavaScript/certificate3.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">Расширенный инструментарий JavaScript в браузере</span>
+                        <span class="certificate-date">2025</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/JavaScript/certificate4.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                    <li class="certificate-item">
+                        <span class="certificate-name">React: Библиотека №1 в современной фронтенд-разработке</span>
+                        <span class="certificate-date">2025</span>
+                        <a href="https://github.com/mikhailbbk/certificates/blob/main/JavaScript/certificate5.pdf" 
+                           class="certificate-link" 
+                           target="_blank">
+                            <i class="fas fa-external-link-alt"></i> PDF
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="github-note">
+            <p>Все сертификаты хранятся в отдельном репозитории GitHub для удобства проверки работодателями</p>
+            <a href="https://github.com/mikhailbbk/certificates" class="github-link" target="_blank">
+                <i class="fab fa-github"></i> Посмотреть все сертификаты на GitHub
+            </a>
+        </div>
+
+        <div class="total-certificates">
+            <h3>Что подтверждают эти сертификаты?</h3>
+            <ul style="text-align: left; max-width: 600px; margin: 1rem auto; padding-left: 1.5rem; line-height: 1.6;">
+                <li><strong>Полный путь обучения:</strong> от основ Python до Fullstack-разработки</li>
+                <li><strong>Backend компетенции:</strong> Python, Django, Flask, PostgreSQL, REST API</li>
+                <li><strong>Frontend навыки:</strong> HTML/CSS, JavaScript, React, адаптивная верстка</li>
+                <li><strong>Профессиональную переквалификацию:</strong> официальный документ о смене профессии</li>
+                <li><strong>Способность к обучению:</strong> 12 завершенных курсов за 2 года</li>
+                <li><strong>Системный подход:</strong> структурированное обучение с получением подтверждающих документов</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024-2025 Михаил Бабков | Python Backend Developer & DevOps Engineer</p>
+        <p>
+            <i class="fas fa-code"></i> Портфолио: 
+            <a href="https://mikhailbbk.github.io">
+                mikhailbbk.github.io
+            </a>
+        </p>
+        <p>Последнее обновление: Январь 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Плавная прокрутка для всех ссылок
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Анимация появления элементов
+            const certificateCategories = document.querySelectorAll('.certificate-category');
+            
+            const fadeInOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        fadeInOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            certificateCategories.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                fadeInOnScroll.observe(el);
+            });
+
+            // Открытие PDF в новой вкладке
+            document.querySelectorAll('.certificate-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    // Файл откроется в новой вкладке благодаря target="_blank"
+                });
+            });
+
+            // Подсветка активного пункта меню
+            const navLinks = document.querySelectorAll('nav a');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === '' && link.getAttribute('href') === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

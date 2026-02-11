@@ -277,7 +277,8 @@ section:last-child {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 2rem; 
+    margin-bottom: 1rem; 
     flex-wrap: wrap;
 }
 
@@ -907,7 +908,7 @@ img.loaded {
         padding: 0.3rem 0.6rem;
         font-size: 0.85rem;
     }
-    
+
     .hero {
         padding-top: 140px !important;
         padding-bottom: 60px;
@@ -957,6 +958,20 @@ img.loaded {
     .highlight-item p {
         font-size: 0.85rem;
     }
+    
+    .cta-buttons {
+        margin-top: 1rem !important;
+        margin-bottom: 0.5rem !important;
+        gap: 0.8rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 260px;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.95rem;
+    }
 
     .section-title {
         font-size: 1.8rem;
@@ -985,21 +1000,6 @@ img.loaded {
     
     .project-card p {
         font-size: 0.9rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-        margin-top: 1.2rem;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-        width: 100%;
-        max-width: 260px;
-        padding: 0.8rem 1.2rem;
-        font-size: 0.95rem;
     }
 
     .project-links-container {
@@ -1108,7 +1108,6 @@ img.loaded {
         font-size: 0.9rem;
     }
 
-    /* Страница сертификатов */
     .certificates-container {
         margin-top: 140px !important;
     }
@@ -1131,10 +1130,10 @@ img.loaded {
     nav a {
         padding: 0.25rem 0.5rem;
         font-size: 0.8rem;
-    }        
+    }    
     
     .hero {
-        padding-top: 160px !important; 
+        padding-top: 160px !important;
         padding-bottom: 50px;
     }
     
@@ -1167,6 +1166,11 @@ img.loaded {
     
     .highlight-item p {
         font-size: 0.75rem;
+    }
+    
+    .cta-buttons {
+        margin-top: 0.8rem !important;
+        margin-bottom: 0.3rem !important;
     }
     
     .section-title {
@@ -1251,7 +1255,7 @@ img.loaded {
 }
 
 /* Экстремально маленькие устройства (до 360px) */
-@media (max-width: 360px) {        
+@media (max-width: 360px) {    
     .hero {
         padding-top: 180px !important;
     }
@@ -1266,6 +1270,11 @@ img.loaded {
     
     .highlight-item p {
         font-size: 0.7rem;
+    }
+    
+    .cta-buttons {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.2rem !important;
     }
     
     .contact-link.email-link {
@@ -1303,7 +1312,7 @@ img.loaded {
 @media (max-width: 768px) and (orientation: landscape) {
     .hero {
         min-height: auto;
-        padding-top: 100px !important; 
+        padding-top: 100px !important;
         padding-bottom: 40px;
     }
     
@@ -1323,6 +1332,11 @@ img.loaded {
     
     .contact-card {
         min-width: 160px;
+    }
+    
+    .cta-buttons {
+        margin-top: 0.8rem !important;
+        margin-bottom: 0.3rem !important;
     }
 
     .certificates-container {

@@ -28,17 +28,22 @@
     <style>        
         @media (max-width: 768px) {
             .hero {
-                padding-top: 240px !important;
+                padding-top: 140px !important;
             }
         }
         @media (max-width: 480px) {
             .hero {
-                padding-top: 280px !important;
+                padding-top: 160px !important;
             }
         }
         @media (max-width: 360px) {
             .hero {
-                padding-top: 320px !important;
+                padding-top: 180px !important;
+            }
+        }
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding-top: 100px !important;
             }
         }
     </style>
@@ -434,6 +439,8 @@
             });
             
             // Плавная прокрутка для навигации
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
             document.querySelectorAll('nav a[href^="#"], .btn-primary[href^="#"], .btn-secondary[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
@@ -493,25 +500,42 @@
                     document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
                     activeLink.classList.add('active');
                 }
-            }
+            }            
             
             function fixMobileHero() {
                 if (window.innerWidth <= 768) {
                     const hero = document.querySelector('.hero');
                     if (hero) {
                         if (window.innerWidth <= 360) {
-                            hero.style.paddingTop = '320px';
+                            hero.style.paddingTop = '180px';
                         } else if (window.innerWidth <= 480) {
-                            hero.style.paddingTop = '280px';
+                            hero.style.paddingTop = '160px';
                         } else {
-                            hero.style.paddingTop = '240px';
+                            hero.style.paddingTop = '140px';
                         }
+                    }
+                }
+            }            
+            
+            function checkMobileMenu() {
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    if (window.innerWidth <= 768) {
+                        nav.style.flexDirection = 'column';
+                    } else {
+                        nav.style.flexDirection = 'row';
                     }
                 }
             }
             
+            // Запускаем функции при загрузке и изменении размера окна
             fixMobileHero();
-            window.addEventListener('resize', fixMobileHero);
+            checkMobileMenu();
+            
+            window.addEventListener('resize', function() {
+                fixMobileHero();
+                checkMobileMenu();
+            });
         });
     </script>
 </body>

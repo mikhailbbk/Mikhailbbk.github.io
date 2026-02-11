@@ -907,10 +907,9 @@ img.loaded {
         padding: 0.3rem 0.6rem;
         font-size: 0.85rem;
     }
-
-    /* Оптимальный отступ для hero секции */
+    
     .hero {
-        padding-top: 200px !important;
+        padding-top: 140px !important;
         padding-bottom: 60px;
         min-height: 100vh;
         display: flex;
@@ -1132,10 +1131,10 @@ img.loaded {
     nav a {
         padding: 0.25rem 0.5rem;
         font-size: 0.8rem;
-    }    
+    }        
     
     .hero {
-        padding-top: 220px !important;
+        padding-top: 160px !important; 
         padding-bottom: 50px;
     }
     
@@ -1252,9 +1251,9 @@ img.loaded {
 }
 
 /* Экстремально маленькие устройства (до 360px) */
-@media (max-width: 360px) {    
+@media (max-width: 360px) {        
     .hero {
-        padding-top: 240px !important;
+        padding-top: 180px !important;
     }
     
     .hero h2 {
@@ -1304,7 +1303,7 @@ img.loaded {
 @media (max-width: 768px) and (orientation: landscape) {
     .hero {
         min-height: auto;
-        padding-top: 160px !important;
+        padding-top: 100px !important; 
         padding-bottom: 40px;
     }
     

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Сертификаты | Михаил Бабков</title>
     
     <!-- Мета-теги для SEO -->
@@ -125,7 +125,7 @@
             display: flex;
             flex-direction: column;
         }
-
+        
         .certificate-item {
             padding: 1rem 0;
             border-bottom: 1px solid #f0f0f0;
@@ -135,6 +135,11 @@
             transition: background-color 0.2s ease;
             flex-wrap: wrap;
             gap: 0.5rem;
+            background: transparent !important;
+            border-left: none !important;
+            margin: 0 !important;
+            padding-left: 0 !important;
+            width: 100% !important;
         }
 
         .certificate-item:last-child {
@@ -142,7 +147,7 @@
         }
 
         .certificate-item:hover {
-            background-color: #f8f9fa;
+            background-color: #f8f9fa !important;
         }
 
         .certificate-content {
@@ -226,15 +231,7 @@
             gap: 0.3rem;
             white-space: nowrap;
             flex-shrink: 0;
-        }
-
-        .diploma-item {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fc 100%);
-            border-left: 4px solid #27ae60;
-            padding: 1rem;
-            margin: 0 -2rem;
-            padding-left: calc(2rem - 4px);
-        }
+        }        
 
         .category-content {
             flex: 1;
@@ -300,19 +297,29 @@
             color: white;
         }
 
+        /* ===== МОБИЛЬНЫЕ УСТРОЙСТВА ===== */
         @media (max-width: 768px) {
             .certificates-container {
-                margin: 100px auto 30px;
+                margin: 140px auto 30px !important; 
                 padding: 0 15px;
             }
 
+            .back-link {
+                margin-bottom: 20px;
+                padding: 8px 16px;
+                font-size: 0.95rem;
+            }
+
             .page-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
             }
 
             .page-subtitle {
-                font-size: 1rem;
-                padding: 0 10px;
+                font-size: 0.95rem;
+                padding: 0 5px;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
             }
 
             .certificates-grid {
@@ -328,6 +335,8 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 0.5rem;
+                margin-bottom: 1rem;
+                padding-bottom: 0.8rem;
             }
 
             .category-icon {
@@ -338,24 +347,69 @@
                 font-size: 1.3rem;
             }
 
+            .category-subtitle {
+                font-size: 0.85rem;
+            }
+            
             .certificate-item {
-                flex-direction: column;
-                gap: 0.5rem;
-                padding: 1rem;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.8rem !important;
+                padding: 1rem 0 !important;
+                width: 100% !important;
+                border-left: none !important;
+                background: transparent !important;
             }
 
-            .certificate-name {
-                min-width: unset;
-                width: 100%;
+            .certificate-content {
+                width: 100% !important;
+            }
+
+            .certificate-content > div[style*="display: flex"] {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.8rem !important;
+                width: 100% !important;
             }
 
             .certificate-date {
-                align-self: flex-start;
+                align-self: flex-start !important;
+                margin-bottom: 0.3rem !important;
+                white-space: normal !important;
             }
 
             .certificate-link {
-                align-self: flex-start;
-                margin-top: 0;
+                align-self: flex-start !important;
+                width: auto !important;
+                min-width: 120px !important;
+                justify-content: center !important;
+                margin-top: 0 !important;
+                background: #3498db !important;
+                color: white !important;
+                padding: 0.6rem 1.2rem !important;
+                border-radius: 6px !important;
+                font-size: 0.95rem !important;
+                white-space: nowrap !important;
+            }
+
+            .certificate-link i {
+                margin-right: 0.3rem !important;
+            }
+
+            .certificate-link:hover {
+                background: #2980b9 !important;
+                transform: translateY(-2px) !important;
+            }
+
+            .certificate-name-wrapper {
+                width: 100% !important;
+            }
+
+            .certificate-name {
+                min-width: unset !important;
+                width: 100% !important;
+                margin-bottom: 0.3rem !important;
+                font-size: 0.95rem !important;
             }
 
             .total-number {
@@ -364,9 +418,144 @@
                 gap: 0.5rem;
             }
 
-            .diploma-item {
-                margin: 0 -1.5rem;
-                padding-left: calc(1.5rem - 4px);
+            .total-certificates ul {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .total-certificates li {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .github-note {
+                padding: 1.2rem !important;
+                margin: 1.5rem 0 !important;
+            }
+
+            .github-note p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+            }
+        }
+
+        /* Очень маленькие устройства */
+        @media (max-width: 480px) {
+            .certificates-container {
+                margin: 130px auto 20px !important;
+            }
+
+            .back-link {
+                padding: 6px 14px;
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .page-title {
+                font-size: 1.6rem;
+            }
+
+            .page-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .certificate-category {
+                padding: 1.2rem !important;
+            }
+
+            .certificate-item {
+                padding: 0.8rem 0 !important;
+            }
+            
+            .certificate-link {
+                width: 100% !important;
+                min-width: unset !important;
+                padding: 0.7rem !important;
+                white-space: normal !important;
+                word-break: break-word !important;
+            }
+
+            .github-note {
+                padding: 1rem !important;
+            }
+
+            .github-note p {
+                font-size: 0.85rem !important;
+                line-height: 1.4 !important;
+            }
+
+            .total-certificates {
+                padding: 1.2rem !important;
+            }
+
+            .total-certificates h3 {
+                font-size: 1.2rem !important;
+            }
+
+            .total-certificates li {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Экстремально маленькие устройства */
+        @media (max-width: 360px) {
+            .certificates-container {
+                margin: 120px auto 20px !important;
+            }
+
+            .page-title {
+                font-size: 1.4rem;
+            }
+
+            .category-title {
+                font-size: 1.1rem !important;
+            }
+
+            .certificate-name {
+                font-size: 0.9rem !important;
+            }
+
+            .certificate-date {
+                font-size: 0.8rem !important;
+            }
+
+            .certificate-link {
+                font-size: 0.85rem !important;
+                padding: 0.6rem !important;
+            }
+
+            .diploma-badge,
+            .certificate-badge {
+                font-size: 0.7rem !important;
+                padding: 0.15rem 0.6rem !important;
+            }
+        }
+
+        /* Ландшафтная ориентация */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .certificates-container {
+                margin: 100px auto 30px !important;
+            }
+
+            .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .certificate-item {
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+
+            .certificate-content > div[style*="display: flex"] {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+
+            .certificate-link {
+                width: auto !important;
+                min-width: 100px !important;
             }
         }
     </style>
@@ -405,8 +594,8 @@
                         <p class="category-subtitle">Нетология, 2025</p>
                     </div>
                 </div>
-                <ul class="certificate-list">
-                    <li class="certificate-item diploma-item">
+                <ul class="certificate-list">                    
+                    <li class="certificate-item">
                         <div class="certificate-content">
                             <div class="certificate-name-wrapper">
                                 <span class="certificate-name">Fullstack-разработчик на Python</span>
@@ -716,6 +905,43 @@
                     link.classList.add('active');
                 }
             });
+
+            // Исправление для мобильного меню
+            function checkMobileMenu() {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').style.flexDirection = 'column';
+                } else {
+                    document.querySelector('nav').style.flexDirection = 'row';
+                }
+            }
+
+            checkMobileMenu();
+            window.addEventListener('resize', checkMobileMenu);
+            
+            // Принудительное исправление отступа для кнопки "На главную"
+            function fixBackLinkMargin() {
+                if (window.innerWidth <= 768) {
+                    const backLink = document.querySelector('.back-link');
+                    if (backLink) {
+                        backLink.style.marginTop = '0';
+                        backLink.style.marginBottom = '20px';
+                    }
+                    
+                    const certificatesContainer = document.querySelector('.certificates-container');
+                    if (certificatesContainer) {
+                        if (window.innerWidth <= 360) {
+                            certificatesContainer.style.marginTop = '120px';
+                        } else if (window.innerWidth <= 480) {
+                            certificatesContainer.style.marginTop = '130px';
+                        } else {
+                            certificatesContainer.style.marginTop = '140px';
+                        }
+                    }
+                }
+            }
+            
+            fixBackLinkMargin();
+            window.addEventListener('resize', fixBackLinkMargin);
         });
     </script>
 </body>

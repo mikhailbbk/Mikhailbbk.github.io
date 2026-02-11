@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Михаил Бабков | Python Backend Developer & DevOps Engineer</title>
     
     <!-- Мета-теги для SEO и соцсетей -->
@@ -24,6 +24,24 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>        
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 240px !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 280px !important;
+            }
+        }
+        @media (max-width: 360px) {
+            .hero {
+                padding-top: 320px !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -476,6 +494,24 @@
                     activeLink.classList.add('active');
                 }
             }
+            
+            function fixMobileHero() {
+                if (window.innerWidth <= 768) {
+                    const hero = document.querySelector('.hero');
+                    if (hero) {
+                        if (window.innerWidth <= 360) {
+                            hero.style.paddingTop = '320px';
+                        } else if (window.innerWidth <= 480) {
+                            hero.style.paddingTop = '280px';
+                        } else {
+                            hero.style.paddingTop = '240px';
+                        }
+                    }
+                }
+            }
+            
+            fixMobileHero();
+            window.addEventListener('resize', fixMobileHero);
         });
     </script>
 </body>

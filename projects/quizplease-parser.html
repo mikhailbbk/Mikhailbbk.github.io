@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -513,7 +513,7 @@ quizplease-parser/
                     <p><strong>Решение: переход на REST API</strong></p>
                     <ul class="solution-steps">
                         <li><strong>API вместо HTML:</strong> Работа с <code>api.quizplease.ru/api/games/schedule/32</code> — стабильнее и быстрее</li>
-                        <li><strong>Меньше зависимостей:</strong> Убрали BeautifulSoup, lxml, python-telegram-bot</li>
+                        <li><strong>Меньше зависимостей:</strong> Убрали BeautifulSoup, lxml. Telegram Bot API используем напрямую через <code>requests</code> вместо python-telegram-bot</li>
                         <li><strong>Структурированные данные:</strong> JSON-ответ вместо парсинга HTML</li>
                         <li><strong>Устойчивость:</strong> API не ломается при редизайне сайта</li>
                     </ul>

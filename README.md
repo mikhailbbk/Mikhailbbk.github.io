@@ -1,4 +1,4 @@
-# Портфолио Михаила Бабкова
+﻿# Портфолио Михаила Бабкова
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
 [![Django](https://img.shields.io/badge/Django-5.2%2B-green)](https://djangoproject.com)
@@ -36,8 +36,8 @@ Python разработчик с фокусом на backend и DevOps. Спец
 - Production развертывание с SSL на порту 8443
 - **Статус:** Онлайн на VPS с полным шифрованием
 
-### [QuizPlease Autoreg](https://mikhailbbk.github.io/projects/quizplease-autoreg.html)  
-**Python 3.11 + BeautifulSoup4 + Telegram API + CI/CD**
+### [QuizPlease Parser](https://mikhailbbk.github.io/projects/quizplease-parser.html)  
+**Python 3.12 + REST API + Telegram API + CI/CD**
 - Автоматический мониторинг расписания игр на quizplease.ru
 - Telegram уведомления о новых играх и изменении статуса
 - Полный CI/CD цикл через GitHub Actions

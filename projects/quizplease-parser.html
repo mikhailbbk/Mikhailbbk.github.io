@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizPlease Autoreg | Портфолио</title>
+    <title>QuizPlease Parser | Портфолио</title>
     
     <!-- Мета-теги для SEO -->
-    <meta name="description" content="Автоматическая система мониторинга расписания игр QuizPlease с Telegram уведомлениями и полным CI/CD циклом.">
-    <meta name="keywords" content="Python, BeautifulSoup, Telegram Bot, CI/CD, GitHub Actions, парсинг данных, автоматизация">
+    <meta name="description" content="Автоматический мониторинг расписания игр QuizPlease через REST API с Telegram-уведомлениями и CI/CD циклом.">
+    <meta name="keywords" content="Python, REST API, Telegram Bot, CI/CD, GitHub Actions, парсинг данных, автоматизация, requests">
     
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -418,20 +418,20 @@
         </a>
 
         <div class="project-header">
-            <h1 class="project-title">QuizPlease Autoreg - Парсер и Telegram-бот</h1>
+            <h1 class="project-title">QuizPlease Parser - Мониторинг расписания</h1>
             
             <div class="project-meta-detail">
                 <span class="project-date"><i class="far fa-calendar"></i> Запущен: 2025</span>
                 <span class="project-status"><i class="fas fa-circle"></i> Production</span>
-                <span class="project-update"><i class="fas fa-sync-alt"></i> Обновлено: Январь 2026</span>
+                <span class="project-update"><i class="fas fa-sync-alt"></i> Обновлено: Сентябрь 2026</span>
             </div>
             
-            <p class="project-subtitle">Автоматическая система мониторинга расписания игр на quizplease.ru с отправкой уведомлений в Telegram и полным CI/CD циклом. Работает 24/7 как systemd-сервис.</p>
+            <p class="project-subtitle">Автоматический мониторинг расписания игр на quizplease.ru через REST API с отправкой уведомлений в Telegram. Работает 24/7 как systemd-сервис, деплой через GitHub Actions.</p>
 
             <div class="tech-stack">
-                <span>Python 3.11</span>
-                <span>BeautifulSoup4</span>
+                <span>Python 3.12</span>
                 <span>Requests</span>
+                <span>REST API</span>
                 <span>Telegram Bot API</span>
                 <span>GitHub Actions</span>
                 <span>Systemd</span>
@@ -444,14 +444,14 @@
         <div class="section">
             <h2>Возможности системы</h2>
             <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> <strong>Автоматический мониторинг</strong> — Парсинг расписания игр с автоматической проверкой изменений каждые 15 минут</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Telegram уведомления</strong> — Автоматические уведомления о новых играх и изменении статуса с детализированной информацией</li>
-                <li><i class="fas fa-check-circle"></i> <strong>CI/CD пайплайн</strong> — Автоматический деплой через GitHub Actions при каждом коммите в main ветку</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Отказоустойчивость</strong> — Работает как systemd-сервис 24/7 с автоперезапуском при сбоях</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Полная информация</strong> — Детализированные сообщения с датой, временем, местом, ценой и статусом игры</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Хранение данных</strong> — JSON-файлы для хранения текущего расписания и истории изменений</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Логирование</strong> — Комплексное логирование в файлы и systemd journal для отладки</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Конфигурация</strong> — Простая настройка через конфигурационный файл с примером</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Автоматический мониторинг</strong> — Парсинг расписания через REST API каждые 30 минут</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Telegram-уведомления</strong> — Уведомления о новых играх и изменении статуса с детализированной информацией</li>
+                <li><i class="fas fa-check-circle"></i> <strong>CI/CD пайплайн</strong> — Автоматический деплой через GitHub Actions при каждом коммите в main</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Отказоустойчивость</strong> — Работает как systemd-сервис 24/7 с автоперезапуском</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Дедупликация по хешу</strong> — Защита от повторных уведомлений, если сайт меняет UUID игры</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Полная информация</strong> — Дата, время, место, цена, статус игры</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Хранение данных</strong> — JSON-файлы с расписанием и историей изменений</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Минимум зависимостей</strong> — только <code>requests</code>, всё остальное — стандартная библиотека Python</li>
             </ul>
         </div>
 
@@ -462,23 +462,19 @@
                 <div class="architecture-item">
                     <h3><i class="fas fa-folder"></i> Структура проекта</h3>
                     <div class="project-structure">
-quizplease-autoreg/
+quizplease-parser/
 ├── .github/workflows/          # CI/CD пайплайны GitHub Actions
 │   ├── deploy.yml              # Автоматический деплой на сервер
-│   └── fix-git.yml             # Утилита для исправления Git репозитория
+│   └── fix-git.yml             # Утилита для восстановления Git
 ├── src/                        # Исходный код проекта
-│   ├── extract_classic_games.py # Основной парсер расписания игр
-│   ├── telegram_notifier.py    # Telegram бот для отправки уведомлений
-│   ├── get_chat_id.py          # Утилита получения Chat ID пользователя
-│   ├── config.example.py       # Пример конфигурационного файла
-│   └── config.py               # Фактическая конфигурация (не в Git)
-├── data/                       # Хранение данных
-│   ├── classic_games.json      # Текущее расписание игр
-│   └── games_history.json      # История изменений расписания
-├── logs/                       # Логи работы системы
-├── requirements.txt            # Зависимости Python проекта
-├── quizplease-autoreg.service  # Конфигурация Systemd сервиса
-└── README.md                   # Полная документация проекта
+│   ├── extract_classic_games.py # Основной парсер через REST API
+│   ├── telegram_notifier.py    # Telegram-клиент для уведомлений
+│   ├── get_chat_id.py          # Утилита получения Chat ID
+│   └── config.example.py       # Пример конфигурационного файла
+├── data/                       # Хранение данных (в .gitignore)
+├── logs/                       # Логи (в .gitignore)
+├── requirements.txt            # Зависимости Python
+└── README.md                   # Документация проекта
                     </div>
                 </div>
 
@@ -486,24 +482,22 @@ quizplease-autoreg/
                     <h3><i class="fas fa-code-branch"></i> CI/CD Pipeline</h3>
                     <ul>
                         <li><strong>Trigger:</strong> Push в main ветку на GitHub</li>
-                        <li><strong>Подготовка:</strong> Установка Python 3.11 и зависимостей</li>
-                        <li><strong>Развертывание:</strong> SSH подключение к production серверу</li>
-                        <li><strong>Обновление:</strong> Обновление кода из репозитория Git</li>
-                        <li><strong>Установка:</strong> Установка зависимостей Python через pip</li>
-                        <li><strong>Перезапуск:</strong> Перезапуск systemd сервиса с новым кодом</li>
-                        <li><strong>Уведомление:</strong> Отправка статуса деплоя в Telegram</li>
+                        <li><strong>Подключение:</strong> SSH к production серверу по ключу</li>
+                        <li><strong>Обновление:</strong> <code>git fetch && git reset --hard origin/main</code></li>
+                        <li><strong>Зависимости:</strong> Установка через pip в venv</li>
+                        <li><strong>Проверка:</strong> Наличие <code>config.py</code></li>
+                        <li><strong>Перезапуск:</strong> systemd-сервиса с новым кодом</li>
                     </ul>
                 </div>
 
                 <div class="architecture-item">
                     <h3><i class="fas fa-cogs"></i> Ключевые компоненты</h3>
                     <ul>
-                        <li><code>extract_classic_games.py</code> — Основной модуль парсера с многоуровневой обработкой данных</li>
-                        <li><code>telegram_notifier.py</code> — Telegram бот для отправки уведомлений о новых играх</li>
-                        <li><code>get_chat_id.py</code> — Утилита для получения Chat ID Telegram пользователя</li>
-                        <li><code>config.py</code> — Конфигурация проекта (токены, настройки)</li>
-                        <li><code>requirements.txt</code> — Зависимости Python (BeautifulSoup4, requests, python-telegram-bot)</li>
-                        <li><code>quizplease-autoreg.service</code> — Конфигурация Systemd сервиса для автозапуска</li>
+                        <li><code>extract_classic_games.py</code> — Парсер через <code>api.quizplease.ru</code> + логика сравнения</li>
+                        <li><code>telegram_notifier.py</code> — HTTP-клиент к Bot API (без тяжёлых SDK)</li>
+                        <li><code>get_chat_id.py</code> — Утилита получения Chat ID</li>
+                        <li><code>config.py</code> — Конфигурация (в .gitignore)</li>
+                        <li><code>requirements.txt</code> — <code>requests&gt;=2.31.0</code></li>
                     </ul>
                 </div>
             </div>
@@ -514,62 +508,74 @@ quizplease-autoreg/
             <div class="solved-problems">
                 
                 <div class="problem-item">
-                    <h4><i class="fas fa-code"></i> Задача 1: Надежный парсинг сайта с динамической структурой</h4>
-                    <p><strong>Проблема:</strong> Сайт quizplease.ru имеет сложную HTML-структуру, которая может изменяться со временем, что приводит к сбоям парсинга.</p>
-                    <p><strong>Решение:</strong></p>
+                    <h4><i class="fas fa-code"></i> Задача 1: Отказ от HTML-скрейпинга в пользу API</h4>
+                    <p><strong>Проблема:</strong> Изначально парсинг шёл через BeautifulSoup и HTML сайта. Вёрстка менялась, ломались CSS-селекторы, парсер падал.</p>
+                    <p><strong>Решение: переход на REST API</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Многоуровневое извлечение данных:</strong> Реализация нескольких методов поиска для каждого поля данных</li>
-                        <li><strong>Резервные селекторы:</strong> Альтернативные CSS-селекторы на случай изменений структуры сайта</li>
-                        <li><strong>Валидация данных:</strong> Проверка корректности извлеченных данных перед сохранением</li>
-                        <li><strong>Хэширование:</strong> Создание уникальных идентификаторов игр для отслеживания изменений во времени</li>
+                        <li><strong>API вместо HTML:</strong> Работа с <code>api.quizplease.ru/api/games/schedule/32</code> — стабильнее и быстрее</li>
+                        <li><strong>Меньше зависимостей:</strong> Убрали BeautifulSoup, lxml, python-telegram-bot</li>
+                        <li><strong>Структурированные данные:</strong> JSON-ответ вместо парсинга HTML</li>
+                        <li><strong>Устойчивость:</strong> API не ломается при редизайне сайта</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-server"></i> Задача 2: Обеспечение бесперебойной работы 24/7</h4>
-                    <p><strong>Проблема:</strong> Система должна работать надежно и автоматически восстанавливаться после сбоев сети, сервера или обновлений сайта.</p>
+                    <p><strong>Проблема:</strong> Система должна работать надёжно и автоматически восстанавливаться после сбоев сети, сервера или API.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Systemd сервис:</strong> Production-ready конфигурация systemd с автоперезапуском при сбоях</li>
-                        <li><strong>Комплексное логирование:</strong> Логирование в файлы и systemd journal для упрощения отладки</li>
-                        <li><strong>Обработка ошибок:</strong> Грейсфул деградация при сбоях сети или недоступности сервера</li>
-                        <li><strong>Таймауты:</strong> Настройка таймаутов HTTP-запросов для предотвращения зависаний</li>
+                        <li><strong>Systemd-сервис:</strong> Production-конфигурация с автоперезапуском</li>
+                        <li><strong>Комплексное логирование:</strong> Логи в файлы и systemd journal</li>
+                        <li><strong>Обработка ошибок:</strong> Грейсфул деградация при недоступности API</li>
+                        <li><strong>Таймауты и retry:</strong> Настройка таймаутов и повторов HTTP-запросов</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-robot"></i> Задача 3: Автоматизация деплоя и обновлений</h4>
-                    <p><strong>Проблема:</strong> Ручное обновление кода на сервере было трудоемким, подверженным ошибкам и требовало постоянного внимания.</p>
+                    <p><strong>Проблема:</strong> Ручное обновление кода на сервере было трудоёмким и подверженным ошибкам.</p>
                     <p><strong>Решение: CI/CD пайплайн на GitHub Actions</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Автоматический триггер:</strong> Деплой автоматически запускается при пуше в main ветку</li>
-                        <li><strong>Безопасное подключение:</strong> Использование SSH-ключей через GitHub Secrets для безопасного доступа</li>
-                        <li><strong>Полный цикл:</strong> Обновление кода → установка зависимостей → перезапуск сервиса</li>
-                        <li><strong>Уведомления:</strong> Отправка статуса деплоя в Telegram для мониторинга</li>
+                        <li><strong>Автоматический триггер:</strong> Деплой при пуше в main ветку</li>
+                        <li><strong>Безопасное подключение:</strong> Отдельный SSH-ключ для деплоя + GitHub Secrets</li>
+                        <li><strong>Полный цикл:</strong> Обновление кода → зависимости → перезапуск сервиса</li>
+                        <li><strong>Идемпотентность:</strong> <code>git reset --hard</code> гарантирует чистое состояние</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
                     <h4><i class="fas fa-bell"></i> Задача 4: Интеллектуальные уведомления без спама</h4>
-                    <p><strong>Проблема:</strong> Необходимо избегать спама пользователей, но при этом своевременно информировать о важных изменениях.</p>
+                    <p><strong>Проблема:</strong> Избегать спама, но своевременно информировать о важных изменениях.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Только изменения:</strong> Уведомления отправляются только при обнаружении новых игр или изменении статуса существующих</li>
-                        <li><strong>Полная информация:</strong> Детализированные сообщения с эмодзи и Markdown форматированием</li>
-                        <li><strong>Читабельный формат:</strong> Структурированные сообщения с четким разделением информации</li>
-                        <li><strong>Уведомления об ошибках:</strong> Сообщения о проблемах в работе парсера для быстрого реагирования</li>
+                        <li><strong>Только изменения:</strong> Уведомления — только при новых играх или смене статуса</li>
+                        <li><strong>Полная информация:</strong> Сообщения с эмодзи и Markdown</li>
+                        <li><strong>Несколько получателей:</strong> Поддержка массива <code>chat_ids</code></li>
+                        <li><strong>Идемпотентность:</strong> Повторный запуск без изменений ничего не отправляет</li>
                     </ul>
                 </div>
 
                 <div class="problem-item">
-                    <h4><i class="fas fa-shield-alt"></i> Задача 5: Безопасность и конфигурация</h4>
-                    <p><strong>Проблема:</strong> Безопасное хранение чувствительных данных (токены бота, Chat ID) и простая настройка проекта.</p>
+                    <h4><i class="fas fa-fingerprint"></i> Задача 5: Дедупликация игр по хешу</h4>
+                    <p><strong>Проблема:</strong> QuizPlease иногда меняет UUID игры без изменения содержимого — парсер считал такую игру новой и слал уведомление повторно.</p>
                     <p><strong>Решение:</strong></p>
                     <ul class="solution-steps">
-                        <li><strong>Шаблон конфигурации:</strong> <code>config.example.py</code> для безопасного клонирования репозитория</li>
-                        <li><strong>Отдельный файл:</strong> <code>config.py</code> не отслеживается в Git для защиты данных</li>
-                        <li><strong>Встроенная утилита:</strong> <code>get_chat_id.py</code> для удобного получения Chat ID пользователя</li>
-                        <li><strong>Изоляция:</strong> Сервис работает под отдельным пользователем Linux с ограниченными правами</li>
+                        <li><strong>Хеш от содержимого:</strong> Считаем MD5 от <code>дата + время + название</code></li>
+                        <li><strong>Двойная проверка:</strong> Сравниваем и по ID, и по хешу</li>
+                        <li><strong>Если ID новый, но хеш совпадает</strong> — считаем дубликатом, не уведомляем</li>
+                        <li><strong>Результат:</strong> Нет ложных срабатываний при смене UUID</li>
+                    </ul>
+                </div>
+
+                <div class="problem-item">
+                    <h4><i class="fas fa-shield-alt"></i> Задача 6: Безопасность и конфигурация</h4>
+                    <p><strong>Проблема:</strong> Безопасное хранение чувствительных данных (токены, chat_ids) и простая настройка.</p>
+                    <p><strong>Решение:</strong></p>
+                    <ul class="solution-steps">
+                        <li><strong>Шаблон конфигурации:</strong> <code>config.example.py</code> для безопасного клонирования</li>
+                        <li><strong>Отдельный файл:</strong> <code>config.py</code> не отслеживается в Git</li>
+                        <li><strong>Встроенная утилита:</strong> <code>get_chat_id.py</code> для получения Chat ID</li>
+                        <li><strong>Отдельный SSH-ключ:</strong> Для CI/CD используется выделенный ключ, не основной</li>
                     </ul>
                 </div>
             </div>
@@ -611,58 +617,56 @@ quizplease-autoreg/
                     <h3><i class="fas fa-download"></i> Установка</h3>
                     <div class="project-structure">
 # Клонируйте репозиторий
-git clone https://github.com/Mikhail15011976/quizplease-autoreg.git
-cd quizplease-autoreg
+git clone https://github.com/mikhailbbk/quizplease-parser.git
+cd quizplease-parser
 
-# Установите зависимости Python
+# Установите зависимости
+python -m venv venv
+source venv/bin/activate   # Linux/macOS
+# venv\Scripts\activate    # Windows
+
 pip install -r requirements.txt
 
 # Настройте конфигурацию
 cp src/config.example.py src/config.py
-# Отредактируйте src/config.py, добавив ваш токен Telegram бота
-
-# Получение Chat ID для уведомлений
-python src/get_chat_id.py
-# Отправьте боту команду /start и скопируйте ваш Chat ID
+# Отредактируйте src/config.py, добавив токен бота и chat_ids
                     </div>
                 </div>
 
                 <div class="architecture-item">
                     <h3><i class="fas fa-play"></i> Запуск</h3>
                     <div class="project-structure">
-# Локальный запуск (для тестирования)
+# Локальный запуск
 python src/extract_classic_games.py
 
-# Конфигурация systemd сервиса
-sudo nano /etc/systemd/system/quizplease-autoreg.service
-
-# Скопируйте содержимое файла quizplease-autoreg.service
-# и настройте пути в соответствии с вашей системой
-
-# Включение и запуск сервиса
+# Как systemd-сервис
+sudo cp deploy/quizplease.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable quizplease-autoreg
-sudo systemctl start quizplease-autoreg
+sudo systemctl enable quizplease
+sudo systemctl start quizplease
+
+# Проверить статус
+systemctl status quizplease
                     </div>
                 </div>
 
                 <div class="architecture-item">
                     <h3><i class="fas fa-tasks"></i> Управление сервисом</h3>
                     <div class="project-structure">
-# Проверить статус работы сервиса
-sudo systemctl status quizplease-autoreg
+# Статус сервиса
+systemctl status quizplease
 
-# Просмотреть логи в реальном времени
-sudo journalctl -u quizplease-autoreg -f
+# Логи в реальном времени
+journalctl -u quizplease -f
 
-# Перезапустить сервис (после обновления конфигурации)
-sudo systemctl restart quizplease-autoreg
+# Перезапуск
+systemctl restart quizplease
 
-# Остановить сервис
-sudo systemctl stop quizplease-autoreg
+# Остановка
+systemctl stop quizplease
 
-# Запустить сервис после остановки
-sudo systemctl start quizplease-autoreg
+# Файловые логи
+tail -f logs/extract_games.log
                     </div>
                 </div>
             </div>
@@ -671,15 +675,15 @@ sudo systemctl start quizplease-autoreg
         <div class="section">
             <h2>Ссылки на проект</h2>
             <div class="project-links">
-                <a href="https://github.com/mikhailbbk/quizplease_autoreg" class="project-link-btn btn-primary" target="_blank">
+                <a href="https://github.com/mikhailbbk/quizplease-parser" class="project-link-btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> Исходный код на GitHub
                 </a>
 
-                <a href="https://github.com/Mikhailbbk/quizplease_autoreg/blob/main/README.md" class="project-link-btn btn-secondary" target="_blank">
+                <a href="https://github.com/mikhailbbk/quizplease-parser/blob/main/README.md" class="project-link-btn btn-secondary" target="_blank">
                     <i class="fas fa-book"></i> Полная документация
                 </a>
 
-                <a href="https://github.com/Mikhailbbk/quizplease_autoreg/tree/main/.github/workflows" class="project-link-btn btn-secondary" target="_blank">
+                <a href="https://github.com/mikhailbbk/quizplease-parser/tree/main/.github/workflows" class="project-link-btn btn-secondary" target="_blank">
                     <i class="fas fa-code-branch"></i> CI/CD Workflows
                 </a>
             </div>
@@ -687,13 +691,14 @@ sudo systemctl start quizplease-autoreg
             <div class="solved-problems" style="margin-top: 2rem;">
                 <div class="problem-item">
                     <h4><i class="fas fa-info-circle"></i> Технические детали проекта</h4>
-                    <p><strong>Язык программирования:</strong> Python 3.11</p>
-                    <p><strong>Основные библиотеки:</strong> BeautifulSoup4, Requests, python-telegram-bot</p>
-                    <p><strong>Хранение данных:</strong> JSON файлы (classic_games.json, games_history.json)</p>
-                    <p><strong>Инфраструктура:</strong> Ubuntu Server 20.04+, Systemd, GitHub Actions CI/CD</p>
+                    <p><strong>Язык программирования:</strong> Python 3.12</p>
+                    <p><strong>Основная библиотека:</strong> <code>requests</code> (единственная внешняя зависимость)</p>
+                    <p><strong>Источник данных:</strong> REST API <code>api.quizplease.ru</code></p>
+                    <p><strong>Хранение данных:</strong> JSON (classic_games.json, games_history.json)</p>
+                    <p><strong>Инфраструктура:</strong> Ubuntu Server, Systemd, GitHub Actions CI/CD</p>
                     <p><strong>Статус:</strong> Production, работает с 2025 года</p>
-                    <p><strong>Частота проверки:</strong> Каждые 15 минут в рабочее время</p>
-                    <p><strong>Уведомления:</strong> Telegram бот с форматированными сообщениями</p>
+                    <p><strong>Частота проверки:</strong> Каждые 30 минут</p>
+                    <p><strong>Уведомления:</strong> Telegram Bot API через HTTP (без python-telegram-bot)</p>
                 </div>
             </div>
         </div>
